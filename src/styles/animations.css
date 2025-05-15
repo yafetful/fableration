@@ -1,0 +1,421 @@
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 为绝对定位元素专门设计的淡入动画，保持X轴位置 */
+@keyframes fadeInAbsolute {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* 从左侧滑入 */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 从右侧滑入 */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 放大淡入 */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 旋转淡入 */
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* 弹跳淡入 */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+/* 通用动画类 */
+.animate-slide-up {
+  animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  z-index: 2;
+}
+
+.animate-slide-down {
+  animation: slideOutUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  z-index: 1;
+}
+
+/* 反向滚动动画类 */
+.animate-slide-up-reverse {
+  animation: slideOutDown 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  z-index: 1;
+}
+
+.animate-slide-down-reverse {
+  animation: slideInDown 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  z-index: 2;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-rotate-in {
+  animation: rotateIn 0.6s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+/* 动画延迟类 */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-900 {
+  animation-delay: 900ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.delay-1100 {
+  animation-delay: 1100ms;
+}
+
+.delay-1200 {
+  animation-delay: 1200ms;
+}
+
+.delay-1300 {
+  animation-delay: 1300ms;
+}
+
+.delay-1400 {
+  animation-delay: 1400ms;
+}
+
+.delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.delay-1600 {
+  animation-delay: 1600ms;
+}
+
+.delay-1700 {
+  animation-delay: 1700ms;
+}
+
+.delay-1800 {
+  animation-delay: 1800ms;
+}
+
+.delay-1900 {
+  animation-delay: 1900ms;
+}
+
+.delay-2000 {
+  animation-delay: 2000ms;
+}
+
+.delay-2100 {
+  animation-delay: 2100ms;
+}
+
+.delay-2200 {
+  animation-delay: 2200ms;
+}
+
+.delay-2300 {
+  animation-delay: 2300ms;
+}
+
+.delay-2400 {
+  animation-delay: 2400ms;
+}
+
+.delay-2500 {
+  animation-delay: 2500ms;
+}
+
+.delay-2600 {
+  animation-delay: 2600ms;
+}
+
+.delay-2700 {
+  animation-delay: 2700ms;
+}
+
+.delay-2800 {
+  animation-delay: 2800ms;
+}
+
+.delay-2900 {
+  animation-delay: 2900ms;
+}
+
+.delay-3000 {
+  animation-delay: 3000ms;
+}
+
+/* 初始不可见，用于等待动画开始 */
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Feature section custom slide animations */
+@keyframes featureSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes featureSlideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+@keyframes featureSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes featureSlideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+
+@keyframes featureSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes featureSlideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+@keyframes featureSlideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+}
+
+@keyframes featureSlideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-slide-in-up {
+  animation: featureSlideInUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-out-up {
+  animation: featureSlideOutUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-in-left {
+  animation: featureSlideInLeft 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-out-left {
+  animation: featureSlideOutLeft 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-in-right {
+  animation: featureSlideInRight 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-out-right {
+  animation: featureSlideOutRight 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-out-down {
+  animation: featureSlideOutDown 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.feature-slide-in-down {
+  animation: featureSlideInDown 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+} 

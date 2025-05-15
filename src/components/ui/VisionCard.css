@@ -1,0 +1,153 @@
+.vision-card {
+  background: linear-gradient(0deg, rgba(132, 159, 255, 0.4) 0%, rgba(240, 245, 255, 0.5) 60%);
+  padding: 35px;
+  border-radius: 25px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid #BCCDD6;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vision-cards-column .vision-card {
+  height: calc(50% - 15px);
+}
+
+.vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.title-container {
+  position: relative;
+  margin-bottom: 30px;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.vision-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a1a2e;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+  line-height: 1.2;
+}
+
+.vision-card:hover .vision-title {
+  background: linear-gradient(90deg, #1a1a2e 0%, #404163 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.vision-underline-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.vision-underline {
+  height: 4px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.underline-gradient {
+  position: absolute;
+  width: 400%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, 
+    #c278ff 0%, 
+    #5184ff 16.66%,
+    #c278ff 33.33%,
+    #5184ff 50%,
+    #c278ff 66.66%,
+    #5184ff 83.33%,
+    #c278ff 100%
+  );
+  background-size: 100% 100%;
+  transition: transform 0.5s ease;
+}
+
+.vision-card:hover .vision-underline {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.vision-card:hover .underline-gradient {
+  animation: gradientShift 4s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.vision-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #6b7393;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+  white-space: pre-line;
+}
+
+.vision-card:hover .vision-subtitle {
+  color: #4e526f;
+}
+
+.vision-text-column .vision-subtitle {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .vision-card {
+    padding: 25px;
+  }
+  
+  .vision-title {
+    font-size: 18px;
+  }
+  .title-container{
+    margin-bottom: 20px;
+  }
+  
+  .vision-subtitle {
+    font-size: 13px;
+  }
+  
+  .vision-cards-column .vision-card {
+    height: auto;
+    min-height: 180px;
+  }
+  
+  .vision-text-column .vision-card {
+    min-height: 200px;
+  }
+} 

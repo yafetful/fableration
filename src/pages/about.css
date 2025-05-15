@@ -1,0 +1,254 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url('../assets/images/aboutus_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.about-hero-text {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.about-hero-text h1 {
+  font-size: 64px;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 300px;
+}
+
+
+.about-info-content {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1440px;
+  z-index: 3;
+  background: linear-gradient(to bottom, #ffffff58 20%, #ffffff 100%);
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  padding: 40px 50px;
+  box-shadow: 0px 4px 20px rgba(0, 27, 121, 0.3);
+  border: none;
+  overflow: hidden;
+}
+
+.about-info-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0.1) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0.1) 100%);
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+.about-info-content h2 {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #7291FF, #0038FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.highlight {
+  font-weight: 500;
+  background: linear-gradient(to right, #DE63FE, #7291FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-info-content h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #DE63FE, #7291FF, #0038FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-info-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #707EAE;
+  margin-bottom: 16px;
+}
+
+
+.about-title-light {
+  font-weight: 300;
+}
+
+.about-title-bold {
+  font-weight: 500;
+}
+
+.vision-section-container {
+  width: 100%;
+  padding: 80px 0;
+}
+
+.vision-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.vision-image-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.vision-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-cards-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.vision-text-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    background-image: url('../assets/images/aboutus_bg_mobile.png');
+    justify-content: flex-start;
+  }
+  .about-hero-text {
+    justify-content: center;
+    margin-top: 100px;
+  }
+  .about-hero-text h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+  .about-info-content{
+    bottom: 32px;
+    left: auto;
+    transform: none;
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 0;
+    background: linear-gradient(to bottom, #ffffffb0 20%, #ffffff 100%);
+    padding: 16px;
+  }
+  .about-info-content h2{
+    font-size: 18px;
+  }
+  .about-info-content h3{
+    font-size: 14px;
+  }
+  .about-info-content p{
+    font-size: 12px;
+  }
+  .vision-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .vision-image-column {
+    grid-column: span 1;
+  }
+  
+  .vision-section-container {
+    padding: 40px 0;
+  }
+  
+  /* 确保卡片间距和显示正确 */
+  .vision-cards-column {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+/* 动画触发器 - 当元素变为可见时应用其数据属性中的动画类 */
+.visible {
+  opacity: 1;
+}
+
+.visible[data-animation="animate-fade-in"] {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* 确保使用绝对定位的元素在动画后保持正确位置 */
+.about-info-content.visible[data-animation="animate-fade-in"] {
+  animation: fadeInAbsolute 0.6s ease-out forwards;
+}
+
+/* 同时应用延迟 */
+.about-info-content.visible[data-animation="animate-fade-in"][data-delay="delay-200"] {
+  animation: fadeInAbsolute 0.6s ease-out forwards;
+  animation-delay: 200ms;
+}
+
+.about-info-content.visible[data-animation="animate-fade-in"][data-delay="delay-600"] {
+  animation: fadeInAbsolute 0.6s ease-out forwards;
+  animation-delay: 600ms;
+}
+
+/* 延迟类 */
+.visible[data-delay="delay-200"] {
+  animation-delay: 200ms;
+}
+
+.visible[data-delay="delay-400"] {
+  animation-delay: 400ms;
+}
+
+.visible[data-delay="delay-600"] {
+  animation-delay: 600ms;
+}
+
+/* 移动端上的特殊处理 */
+@media (max-width: 768px) {
+  /* 移动端上的动画修正 */
+  .about-info-content.visible[data-animation="animate-fade-in"],
+  .about-info-content.visible[data-animation="animate-fade-in"][data-delay="delay-200"],
+  .about-info-content.visible[data-animation="animate-fade-in"][data-delay="delay-600"] {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}

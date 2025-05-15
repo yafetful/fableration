@@ -1,0 +1,94 @@
+/* Main container */
+.creative-container {
+  position: relative;
+  width: 100%;
+  /* Height equals 2 screen heights */
+  height: 200vh;
+  overflow: visible;
+  background-color: transparent; /* 改为透明，避免黑色背景 */
+}
+
+.creative-content-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+/* Fixed content container */
+.creative-content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* 视频背景样式 */
+.creative-video {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1; /* 确保视频在内容层之下 */
+}
+
+/* Slide text style */
+.slide-text {
+  color: white;
+  font-size: 70px;
+  font-weight: 200;
+  line-height: 1.4;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  max-width: 1280px;
+  text-align: center;
+  white-space: pre-line;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Logo image style */
+.slide-logo {
+  width: 480px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+/* Logo and text container */
+.logo-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logo-text-container .slide-logo {
+  margin: 0;
+  width: 480px;
+}
+
+@media (max-width: 768px) {
+  .slide-text {
+    font-size: 28px;
+    padding: 1rem;
+    width: 95%;
+    line-height: 1.3;
+  }
+  
+  .slide-logo {
+    width: 240px;
+  }
+  
+  .logo-text-container .slide-logo {
+    width: 180px;
+  }
+}

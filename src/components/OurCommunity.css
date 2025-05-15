@@ -1,0 +1,126 @@
+.our-community-container {
+  width: 100%;
+  height: 300vh;
+  position: absolute;
+  background: #D7E6FF;
+  overflow: visible;
+  --sidebar-width: calc((100% - 1440px) / 2); /* 计算侧边栏宽度 */
+}
+
+.our-community-content-wrapper {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  padding-top: calc(14vh);
+  padding-bottom: calc(14vh); /* 使用视口高度的70%作为底部padding */
+  transform: translateY(calc(50vh - 50%));
+  z-index: 2;
+  will-change: transform; /* 优化动画性能 */
+}
+
+.our-community-grid {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden; /* 改为visible允许卡片旋转时显示完整 */
+  padding-left: max(2rem, var(--sidebar-width));
+  will-change: transform; /* 优化动画性能 */
+}
+
+.our-community-title-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  padding-left: max(2rem, var(--sidebar-width));
+  margin-bottom: 64px;
+  text-align: left;
+}
+
+.our-community-title {
+  font-size: 64px;
+  font-weight: 400;
+  margin: 0;
+  color: #010821;
+  position: relative;
+  z-index: 5; /* 确保标题在卡片上方 */
+}
+
+.our-community-text {
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.our-community-title-regular {
+  font-weight: 300;
+}
+
+.our-community-title-bold {
+  font-weight: 500;
+}
+
+/* 卡片动画容器样式 */
+.card-animation-container {
+  position: absolute;
+  width: 885px;
+  transform-origin: left center; /* 修改变换原点为左侧中心 */
+  will-change: transform, opacity; /* 优化动画性能 */
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* 添加弹性过渡效果 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 添加阴影增强立体感 */
+  border-radius: 30px; /* 保持与卡片一致的圆角 */
+}
+
+@media (max-width: 768px) {
+  .our-community-container {
+    position: relative;
+    width: 100%;
+    height: auto; /* 在移动设备上不需要那么大的滚动高度 */
+    overflow-x: hidden; /* 防止水平溢出 */
+  }
+  
+  .our-community-grid {
+    overflow: hidden;
+    padding: 16px;
+    flex-direction: column; /* 移动设备上改为垂直排列 */
+    height: auto;
+  }
+  
+  .our-community-title-wrapper {
+    padding-left: 1rem;
+    margin-top: 72px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .our-community-title {
+    font-size: 32px;
+  }
+  
+  .card-animation-container {
+    position: relative; /* 在移动设备上不使用绝对定位 */
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    /* 移除阻止动画的规则 */
+    /* transform: none !important; */
+    /* opacity: 1 !important; */
+  }
+  
+  .our-community-content-wrapper {
+    position: relative; /* 移动设备上取消粘性定位 */
+    height: auto;
+    padding-bottom: 0;
+    transform: none;
+
+  }
+
+} 

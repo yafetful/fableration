@@ -1,0 +1,227 @@
+/* Dashboard Form Styles */
+
+/* Form Container */
+.dashboard-form-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Form Label */
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.form-label.required::after {
+  content: "*";
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+/* Form Input */
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.form-input.error {
+  border-color: #ef4444;
+}
+
+/* Form Textarea */
+.form-textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  resize: vertical;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Form Select */
+.form-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  appearance: none;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Form Checkbox/Radio */
+.form-checkbox,
+.form-radio {
+  width: 1rem;
+  height: 1rem;
+  color: #6366f1;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.form-radio {
+  border-radius: 50%;
+}
+
+.form-checkbox:focus,
+.form-radio:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Form Checkbox/Radio Label */
+.form-check-label {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+/* Help Text */
+.form-help-text {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Error Message */
+.form-error-message {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+/* Form Buttons */
+.form-button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.form-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.form-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.form-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-button-primary {
+  background-color: #6366f1;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.form-button-primary:hover:not(:disabled) {
+  background-color: #4f46e5;
+}
+
+.form-button-secondary {
+  background-color: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.form-button-secondary:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+
+.form-button-danger {
+  background-color: #ef4444;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.form-button-danger:hover:not(:disabled) {
+  background-color: #dc2626;
+}
+
+/* Image Upload */
+.image-upload-container {
+  margin-bottom: 1rem;
+}
+
+.image-upload-preview {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+}
+
+.image-upload-preview img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.image-upload-options {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.image-upload-option {
+  display: flex;
+  align-items: center;
+}
+
+.image-upload-option input {
+  margin-right: 0.5rem;
+} 

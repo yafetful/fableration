@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - ./server/.env
+    environment:
+      - PORT=3001
+      - HOST=${DOMAIN:-localhost}
+    volumes:
+      - ./server/uploads:/app/uploads
+      - ./server/database.sqlite:/app/database.sqlite
+    ports:
+      - "3001:3001" 

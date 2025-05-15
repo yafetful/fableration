@@ -1,0 +1,163 @@
+.glass-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 4px 19px rgba(0, 27, 121, 0.09);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.glass-button-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 8px 24px 8px 8px;
+  z-index: 1;
+}
+
+.glass-button-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #0038FF;
+  margin-right: 24px;
+  overflow: hidden;
+}
+
+.glass-button-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.glass-button-arrow {
+  display: flex;
+  align-items: center;
+}
+
+.glass-button-arrow img {
+  width: 24px;
+  height: auto;
+}
+
+/* 尺寸变体 */
+.glass-button.sm {
+  width: 120px;
+  height: 48px;
+}
+
+.glass-button.sm .glass-button-inner {
+  padding: 6px 16px 6px 6px;
+}
+
+.glass-button.sm .glass-button-icon-circle {
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+}
+
+.glass-button.sm .glass-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.glass-button.md {
+  width: 155px;
+  height: 60px;
+}
+
+.glass-button.lg {
+  width: 180px;
+  height: 70px;
+}
+
+.glass-button.lg .glass-button-inner {
+  padding: 10px 32px 10px 10px;
+}
+
+.glass-button.lg .glass-button-icon-circle {
+  width: 48px;
+  height: 48px;
+  margin-right: 32px;
+}
+
+.glass-button.lg .glass-button-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 主题变体 */
+.glass-button.primary {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-button.primary .glass-button-text {
+  color: #0038FF;
+}
+
+.glass-button.secondary {
+  background: rgba(0, 56, 255, 0.1);
+  border-color: #0038FF;
+}
+
+.glass-button.secondary .glass-button-text {
+  color: #0038FF;
+}
+
+/* 悬停效果 */
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 25px rgba(0, 27, 121, 0.15);
+}
+
+.glass-button:active {
+  transform: translateY(0);
+}
+
+.glass-button.simple .glass-button-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.glass-button.simple.md {
+  width: 240px;
+}
+
+
+.glass-button.simple .glass-button-text {
+  text-align: left;
+  color: #010821;
+  font-size: 18px;
+  font-weight: 400;
+  min-width: 0;
+}
+
+.glass-button.simple .glass-button-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+} 
+
+@media (max-width: 768px) {
+  .glass-button.simple.md {
+    width: 180px;
+    height: 48px;
+  }
+}

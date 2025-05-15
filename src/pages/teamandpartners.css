@@ -1,0 +1,305 @@
+/* 整体容器样式 */
+.team-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.team-header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url('../assets/images/team_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* 标题样式 */
+.team-hero-text {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.team-hero-text h1 {
+  font-size: 64px;
+  line-height: 1.2;
+  color: white;
+  margin: 0;
+}
+
+.team-title-light {
+  font-weight: 300;
+}
+
+.team-title-bold {
+  font-weight: 500;
+}
+
+.team-content {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* 部分标题 */
+.section-title {
+  text-align: center;
+  margin: 60px 0 40px;
+}
+
+.section-title h2 {
+  font-size: 64px;
+  font-weight: 500;
+  color: #010821;
+  margin: 0;
+}
+
+/* 主要团队网格布局 - 大图 */
+.featured-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* 普通团队网格布局 - 小图 */
+.regular-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* 合作伙伴部分 */
+.partners-section {
+  padding: 40px 0 80px;
+  margin-top: 40px;
+}
+
+/* 跑马灯容器 */
+.partners-marquee-container {
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  display: none; /* 默认隐藏 */
+}
+
+.partners-marquee-visible {
+  display: block; /* JavaScript控制显示 */
+}
+
+@media (min-width: 1025px) {
+  .partners-marquee-container {
+    display: block; /* PC端显示 */
+  }
+}
+
+/* 跑马灯样式 */
+.partners-marquee {
+  width: 100%;
+  overflow: hidden;
+  height: 200px;
+}
+
+.partners-marquee-content {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+  will-change: transform; /* 提高动画性能 */
+  height: 100%;
+  align-items: center;
+}
+
+/* 当悬停时暂停动画 */
+.partners-marquee-container:hover .partners-marquee-content {
+  animation-play-state: paused;
+}
+
+/* 跑马灯动画 */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* 只移动一半的宽度，因为我们复制了内容 */
+  }
+}
+
+/* 合作伙伴卡片样式 */
+.partner-card-link {
+  text-decoration: none;
+  display: block;
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+.partner-card {
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 32px;
+  overflow: visible;
+}
+
+.partner-card-link:hover .partner-card {
+  z-index: 10;
+  transform: translateY(-5px);
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 32px;
+}
+
+.partner-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+}
+
+/* 动画效果 */
+.opacity-0 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible, 
+.opacity-0.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 卡片容器样式 */
+.card-container,
+.partner-card-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.card-container.visible,
+.partner-card-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 延迟的类 */
+[data-delay="delay-200"] {
+  transition-delay: 0.2s;
+}
+
+[data-delay="delay-400"] {
+  transition-delay: 0.4s;
+}
+
+[data-delay="delay-600"] {
+  transition-delay: 0.6s;
+}
+
+[data-delay="delay-800"] {
+  transition-delay: 0.8s;
+}
+
+/* 响应式样式 */
+
+@media (max-width: 768px) {
+  .team-header-content{
+    background-image: url('../assets/images/team_bg_mobile.png');
+    justify-content: flex-start;
+  }
+  .team-hero-text {
+    justify-content: center;
+    margin-top: 100px;
+  }
+  .team-hero-text h1 {
+    font-size: 48px;
+  }
+  
+  .section-title h2 {
+    font-size: 40px;
+  }
+  
+  .featured-team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .regular-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 32px;
+  }
+
+  .partners-section{
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  .section-title{
+    margin: 32px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .team-content {
+    padding: 0 16px;
+  }
+  
+  .team-hero-text h1 {
+    font-size: 36px;
+  }
+  
+  .section-title h2 {
+    font-size: 32px;
+  }
+  
+  .featured-team-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .regular-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .partners-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* 移动端网格布局 - 默认隐藏 */
+.partners-grid-mobile {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1440px;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.partners-grid-mobile .partner-card-link {
+  margin: 0;
+}
+
+/* 媒体查询 */
+@media (max-width: 1024px) {
+  .partners-marquee-container {
+    display: none; /* 隐藏PC端跑马灯 */
+  }
+  
+  .partners-grid-mobile {
+    display: grid; /* 显示移动端网格 */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

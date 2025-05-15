@@ -1,0 +1,158 @@
+.video-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.video-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.video-card-img-outer {
+  width: 50%;
+  aspect-ratio: 16/9;
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.video-card-img-outer a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.video-card-img-outer a:hover {
+  transform: scale(1.1);
+  /* box-shadow: 0 8px 30px rgba(0, 56, 255, 0.2); */
+}
+
+.video-card-img-outer:hover {
+  box-shadow: 0 8px 30px rgba(0, 56, 255, 0.2);
+}
+
+.video-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-card-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+}
+
+.video-card-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 48px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video-card-text-container {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Neue Einstellung', sans-serif;
+  font-size: 40px;
+  line-height: 1.25;
+  padding-left: 40px;
+}
+
+/* 所有文字默认隐藏，无论是否动画 */
+.video-card-text-line {
+  display: inline-block;
+  background: linear-gradient(135deg, #DE63FE 0%, #7291FF 35%, #0038FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+  transform-origin: center center;
+  font-weight: 200; /* ExtraLight - 最终状态 */
+  opacity: 0; /* 默认不可见，直到动画完成 */
+}
+
+/* 动画控制 */
+.video-card-text-line.animate {
+  opacity: 0; /* 动画开始时不可见 */
+  transform: translateY(25px) scale(1.5);
+}
+
+/* 900: Black */
+.video-card-text-line.animate.weight-900 {
+  animation: textFadeIn-900 1s ease-out forwards;
+}
+
+@keyframes textFadeIn-900 {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) scale(1.5);
+    font-weight: 900; /* Black */
+  }
+  
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    font-weight: 400; /* ExtraLight */
+  }
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .video-card-content {
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .video-card-text-container,
+  .video-card-img-outer {
+    width: 100%;
+  }
+  
+  .video-card-img-outer {
+    height: 200px;
+    max-width: 100%;
+    margin-top: 32px;
+  }
+  
+  .video-card-img-wrapper {
+    height: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .video-card-text-container {
+    font-size: 28px;
+    text-align: center;
+    padding-left: 0;
+  }
+} 
