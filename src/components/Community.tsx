@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Community.css';
 import { Button } from './ui/Button';
 import api from '../api';
-import type { Event, EventItem } from '../api';
+import type { Event } from '../api';
 
 // API base URL constant
 const API_BASE_URL = 'http://localhost:3001';
