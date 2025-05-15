@@ -28,7 +28,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 // API基础URL
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 // 创建认证提供者组件
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

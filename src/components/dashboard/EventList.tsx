@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api';
 import type { Event } from '../../api';
 
-const API_BASE_URL = 'http://localhost:3001'; // 添加API基础URL常量
+const API_BASE_URL = ''; // 添加API基础URL常量
 
 const EventList: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);

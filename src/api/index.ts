@@ -1,5 +1,5 @@
 // API通信接口
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 interface User {
   id: number;

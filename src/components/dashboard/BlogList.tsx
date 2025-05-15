@@ -4,7 +4,7 @@ import api from '../../api';
 import type { Blog } from '../../api';
 
 // 添加API基础URL常量
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '';
 
 // 处理图片URL，如果是相对路径则加上API基础URL
 const getFullImageUrl = (imageUrl?: string) => {

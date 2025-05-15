@@ -5,7 +5,7 @@ import api from '../api';
 import type { Event } from '../api';
 
 // API base URL constant
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '';
 
 // Process image URL, add API base URL if it's a relative path
 const getFullImageUrl = (imageUrl?: string) => {

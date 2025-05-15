@@ -6,7 +6,7 @@ import type { Highlight } from "../api";
 import "./Event.css";
 
 // API基础URL，用于处理相对路径的图片
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '';
 
 // 处理图片URL，添加API基础URL如果是相对路径
 const getFullImageUrl = (imageUrl?: string) => {

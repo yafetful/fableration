@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api';
 import type { Highlight } from '../../api';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '';
 
 // Process image URL, add API base URL if it's a relative path
 const getFullImageUrl = (imageUrl?: string) => {
