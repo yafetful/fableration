@@ -19,7 +19,6 @@ export function Navbar({ className }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  // 监听窗口大小变化
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -34,13 +33,11 @@ export function Navbar({ className }: NavbarProps) {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
   
-  // 菜单项数据
   const aboutDropdownItems: DropdownItem[] = [
     { label: "About Fableration", href: "/about" },
     { label: "Team & Partners", href: "/team" }
   ];
   
-  // 移动菜单数据
   const mobileMenuItems = [
     {
       label: "About Us",

@@ -16,10 +16,10 @@ interface CompetitionCardProps {
   isVisible?: boolean;
 }
 
-// 常量定义API基础URL
+// Define API base URL constant
 const API_BASE_URL = "";
 
-// 处理图片URL，如果是相对路径则加上API基础URL
+// Process image URL, add API base URL if it's a relative path
 const getFullImageUrl = (imageUrl?: string) => {
   if (!imageUrl) return "";
   if (imageUrl.startsWith("http")) return imageUrl;
@@ -67,12 +67,12 @@ const CCommunity: React.FC = () => {
   const [newsVisible, setNewsVisible] = useState(false);
   const [competitionsVisible, setCompetitionsVisible] = useState(false);
 
-  // 添加博客数据状态
+  // Add blog data state
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  // 添加当前分类状态
+  // Add current category state
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // 获取博客数据
+  // Get blog data
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -86,7 +86,7 @@ const CCommunity: React.FC = () => {
     fetchBlogs();
   }, []);
 
-  // 使用IntersectionObserver监听元素可见性
+  // Use IntersectionObserver to monitor element visibility
   useEffect(() => {
     const communityObserver = new IntersectionObserver(
       (entries) => {
@@ -143,13 +143,13 @@ const CCommunity: React.FC = () => {
     };
   }, []);
 
-  // 根据分类过滤博客
+  // Filter blogs by category
   const filteredBlogs =
     activeCategory === "All"
       ? blogs
       : blogs.filter((blog) => blog.category === activeCategory);
 
-  // 处理分类切换
+  // Handle category change
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
   };

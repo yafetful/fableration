@@ -76,7 +76,6 @@
   max-width: 90%;
 }
 
-/* 现代设计风格 */
 .info-card-modern {
   flex-direction: column;
   border-radius: 30px;
@@ -130,7 +129,6 @@
   color: #666F90;
 }
 
-/* 团队卡片风格 */
 .info-card-team {
   flex-direction: column;
   border-radius: 30px;
@@ -148,7 +146,6 @@
   background: #FFFFFF;
 }
 
-/* 团队成员图片尺寸控制 */
 .info-card-team .team-image-small {
   height: 168px;
 }
@@ -194,12 +191,10 @@
   white-space: pre-line;
 }
 
-/* 列表项格式化 */
 .info-card-team .info-card-text {
   padding-left: 5px;
 }
 
-/* 自定义列表样式处理 */
 .info-card-team .info-card-content {
   display: flex;
   flex-direction: column;
@@ -270,7 +265,6 @@
     max-width: 100%;
   }
 
-  /* 移动端现代设计风格 */
   .info-card-modern {
     border-radius: 24px;
     max-width: 100%;
@@ -298,7 +292,6 @@
     font-size: 13px;
   }
   
-  /* 移动端团队卡片风格 */
   .info-card-team {
     border-radius: 24px;
     max-width: 100%;

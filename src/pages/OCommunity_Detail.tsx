@@ -23,7 +23,7 @@ const CommunityDetail: React.FC = () => {
   const [direction, setDirection] = useState<'up'|'down'|'left'|'right'>('up');
   const [nextIndex, setNextIndex] = useState<number|null>(null);
 
-  // 判断是否为移动端
+  // Check if mobile device
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   // Define all community card data
@@ -57,7 +57,7 @@ const CommunityDetail: React.FC = () => {
     },
   ];
 
-  // 同步URL参数到当前索引
+  // Sync URL parameters to current index
   useEffect(() => {
     const parsedId = id ? parseInt(id, 10) : 0;
     if (!isNaN(parsedId) && parsedId >= 0 && parsedId < cardData.length) {
@@ -65,12 +65,12 @@ const CommunityDetail: React.FC = () => {
     }
   }, [id, cardData.length]);
 
-  // 切换动画
+  // Toggle animation
   const handleSwitch = (targetIndex: number, dir: 'up'|'down'|'left'|'right') => {
     setDirection(dir);
     setAnimation('out');
     setNextIndex(targetIndex);
-    // 更新URL
+    // Update URL
     navigate(`/ourcommunity/${targetIndex}`);
   };
 
@@ -92,7 +92,7 @@ const CommunityDetail: React.FC = () => {
     }
   };
 
-  // 动画结束后切换内容
+  // Switch content after animation ends
   const handleAnimationEnd = () => {
     if (animation === 'out' && nextIndex !== null) {
       setCurrentCardIndex(nextIndex);
@@ -103,37 +103,34 @@ const CommunityDetail: React.FC = () => {
     }
   };
 
-  // 创建各个部分的引用
+  // Create references for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const cardSectionRef = useRef<HTMLDivElement>(null);
   const buttonSectionRef = useRef<HTMLDivElement>(null);
 
-  // 添加滚动监听，触发动画
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            // 为已经可见的元素移除监听
+            // Remove observer for visible elements
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // 当元素20%进入视口时触发，底部有100px的缓冲区
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // Trigger when element is 20% in viewport, 100px buffer at bottom
     );
-
-    // 监听英雄区域
+    
+    // Observe hero section
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
 
-    // 监听特性区域
     if (cardSectionRef.current) {
       observer.observe(cardSectionRef.current);
     }
 
-    // 监听按钮区域
     if (buttonSectionRef.current) {
       observer.observe(buttonSectionRef.current);
     }
@@ -146,7 +143,7 @@ const CommunityDetail: React.FC = () => {
   // Get the current card to display
   const currentCard = cardData[currentCardIndex];
 
-  // 动画className
+  // Animation className
   let animationClass = '';
   if (animation === 'out') {
     if (direction === 'up') animationClass = 'ocommunity-slide-out-down';

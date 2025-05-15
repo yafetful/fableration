@@ -15,7 +15,7 @@ interface LoginResponse {
   user: User;
 }
 
-// 定义认证上下文类型
+// Define authentication context type
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
@@ -24,28 +24,28 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// 创建认证上下文
+// Create authentication context
 const AuthContext = createContext<AuthContextType | null>(null);
 
 // API基础URL
 const API_URL = '/api';
 
-// 创建认证提供者组件
+// Create authentication provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 验证令牌并加载用户数据
+  // Verify token and load user data
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        // 检查是否已有令牌
+        // Check if token is already present
         if (!api.auth.isAuthenticated()) {
           setIsLoading(false);
           return;
         }
 
-        // 验证令牌
+        // Verify token
         const response = await fetch(`${API_URL}/auth/verify`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         if (data.valid && data.user) {
           setUser(data.user);
         } else {
-          // 清除无效令牌
+          // Clear invalid token
           localStorage.removeItem('token');
         }
       } catch (error) {
@@ -71,11 +71,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     verifyToken();
   }, []);
 
-  // 登录方法
+  // Login method
   const login = async (email: string, password: string) => {
     try {
       const response = await api.auth.login(email, password) as LoginResponse;
-      // 从响应中获取用户信息
+      // Get user information from response
       if (response && response.user) {
         setUser(response.user);
       }
@@ -85,13 +85,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // 登出方法
+  // Logout method
   const logout = () => {
     api.auth.logout();
     setUser(null);
   };
 
-  // 传递认证状态和方法
+  // Pass authentication status and methods
   const value = {
     user,
     isAuthenticated: !!user,
@@ -103,7 +103,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// 自定义hook，方便使用认证上下文
+// Custom hook for easy access to authentication context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

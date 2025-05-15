@@ -8,7 +8,6 @@ const AnnouncementManager: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 加载公告数据
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
@@ -27,7 +26,6 @@ const AnnouncementManager: React.FC = () => {
     fetchAnnouncements();
   }, []);
 
-  // 删除公告
   const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this announcement?')) {
       try {
@@ -40,7 +38,6 @@ const AnnouncementManager: React.FC = () => {
     }
   };
 
-  // 切换公告激活状态
   const handleToggleActive = async (id: number) => {
     try {
       const announcement = announcements.find(a => a.id === id);
@@ -64,7 +61,6 @@ const AnnouncementManager: React.FC = () => {
     }
   };
 
-  // 渲染加载状态
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -74,7 +70,6 @@ const AnnouncementManager: React.FC = () => {
     );
   }
 
-  // 渲染错误状态
   if (error) {
     return (
       <div className="p-8 text-center text-red-500">

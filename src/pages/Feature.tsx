@@ -40,36 +40,36 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ title, subtitle, text, 
 );
 
 const Features: React.FC = () => {
-  // 创建各个部分的引用
+  // Create references for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const buttonSectionRef = useRef<HTMLDivElement>(null);
 
-  // 添加滚动监听，触发动画
+  // Add scroll listener to trigger animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            // 为已经可见的元素移除监听
+            // Remove observer for visible elements
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // 当元素20%进入视口时触发，底部有100px的缓冲区
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // Trigger when element is 20% in viewport, 100px buffer at bottom
     );
 
-    // 监听英雄区域
+    // Observe hero section
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
 
-    // 监听按钮区域
+    // Observe button section
     if (buttonSectionRef.current) {
       observer.observe(buttonSectionRef.current);
     }
 
-    // 监听所有特性区域
+    // Observe all feature sections
     document.querySelectorAll('.feature-section').forEach(section => {
       observer.observe(section);
     });

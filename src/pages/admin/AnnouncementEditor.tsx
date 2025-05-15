@@ -23,7 +23,7 @@ const AnnouncementEditor: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // 加载公告数据（编辑模式）
+  // Load announcement data (edit mode)
   useEffect(() => {
     if (isEditing && id) {
       const fetchAnnouncement = async () => {
@@ -32,7 +32,7 @@ const AnnouncementEditor: React.FC = () => {
           setError(null);
           const data = await api.announcements.getById(id);
           
-          // 格式化日期为YYYY-MM-DD格式，用于日期输入框
+          // Format date as YYYY-MM-DD for date input field
           if (data.expiresAt) {
             const expiresDate = new Date(data.expiresAt);
             data.expiresAt = expiresDate.toISOString().split('T')[0];
@@ -51,7 +51,7 @@ const AnnouncementEditor: React.FC = () => {
     }
   }, [isEditing, id]);
 
-  // 处理表单输入变化
+  // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     
@@ -68,7 +68,7 @@ const AnnouncementEditor: React.FC = () => {
     }
   };
 
-  // 提交表单
+  // Submit form
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
@@ -77,21 +77,21 @@ const AnnouncementEditor: React.FC = () => {
     try {
       const announcementData: Announcement = {
         ...formData,
-        // 确保日期格式正确
+        // Ensure date format is correct
         createdAt: formData.createdAt || new Date().toISOString(),
-        // 如果为空字符串，设置为undefined而不是null
+        // If empty string, set to undefined instead of null
         expiresAt: formData.expiresAt || undefined
       };
       
       if (isEditing && id) {
-        // 更新现有公告
+        // Update existing announcement
         await api.announcements.update(id, announcementData);
       } else {
-        // 创建新公告
+        // Create new announcement
         await api.announcements.create(announcementData);
       }
       
-      // 保存成功，返回列表页面
+      // Save success, return to list page
       navigate('/admin/announcements');
     } catch (err) {
       console.error('Failed to save announcement:', err);

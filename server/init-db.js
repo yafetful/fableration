@@ -1,60 +1,60 @@
-// 数据库初始化脚本
+// Database initialization script
 import db from './db.js';
 import bcrypt from 'bcrypt';
 
-console.log('正在初始化数据库...');
+console.log('Initializing database...');
 
-// 清空现有表数据
+// Clear existing table data
 const clearTables = async () => {
-  console.log('清空现有表数据...');
+  console.log('Clearing existing table data...');
   
   try {
-    // 需要先清空有外键约束的表
+    // First clear tables with foreign key constraints
     await db.run('DELETE FROM event_items');
     await db.run('DELETE FROM events');
     await db.run('DELETE FROM blogs');
     await db.run('DELETE FROM announcements');
     
-    console.log('表数据已清空');
+    console.log('Table data cleared');
   } catch (error) {
-    console.error('清空表数据失败:', error.message);
+    console.error('Failed to clear table data:', error.message);
   }
 };
 
-// 创建测试用户
+// Create test user
 const createUsers = async () => {
-  console.log('创建测试用户...');
+  console.log('Creating test user...');
   
   try {
-    // 检查是否已有admin用户
+    // Check if admin user already exists
     const adminExists = await db.get("SELECT * FROM users WHERE email = ?", ['admin@fableration.com']);
     
     if (!adminExists) {
-      const hashedPassword = bcrypt.hashSync('123', 10); // 默认密码 '123'
+      const hashedPassword = bcrypt.hashSync('123', 10); // Default password '123'
       
       await db.run(
         'INSERT INTO users (email, password, role, createdAt) VALUES (?, ?, ?, ?)',
         ['admin@fableration.com', hashedPassword, 'admin', new Date().toISOString()]
       );
       
-      console.log('已创建管理员用户: admin@fableration.com (密码: 123)');
+      console.log('Admin user created: admin@fableration.com (password: 123)');
     } else {
-      console.log('管理员用户已存在，跳过创建');
+      console.log('Admin user already exists, skipping creation');
     }
   } catch (error) {
-    console.error('创建用户失败:', error.message);
+    console.error('Failed to create user:', error.message);
   }
 };
 
-// 创建示例博客
+// Create example blogs
 const createBlogs = async () => {
-  console.log('创建示例博客...');
+  console.log('Creating example blogs...');
   
   try {
     const now = new Date().toISOString();
     const yesterday = new Date(Date.now() - 86400000).toISOString();
     
-    // 博客1
+    // Blog 1
     await db.run(
       `INSERT INTO blogs (title, content, summary, category, imageUrl, externalLink, createdAt, updatedAt, published)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -71,7 +71,7 @@ const createBlogs = async () => {
       ]
     );
     
-    // 博客2
+    // Blog 2
     await db.run(
       `INSERT INTO blogs (title, content, summary, category, imageUrl, externalLink, createdAt, updatedAt, published)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -88,7 +88,7 @@ const createBlogs = async () => {
       ]
     );
     
-    // 博客3
+    // Blog 3
     await db.run(
       `INSERT INTO blogs (title, content, summary, category, imageUrl, externalLink, createdAt, updatedAt, published)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -105,22 +105,22 @@ const createBlogs = async () => {
       ]
     );
     
-    console.log('已创建3篇示例博客');
+    console.log('3 example blogs created');
   } catch (error) {
-    console.error('创建博客失败:', error.message);
+    console.error('Failed to create blogs:', error.message);
   }
 };
 
-// 创建示例公告
+// Create example announcements
 const createAnnouncements = async () => {
-  console.log('创建示例公告...');
+  console.log('Creating example announcements...');
   
   try {
     const now = new Date().toISOString();
     const nextMonth = new Date();
     nextMonth.setMonth(nextMonth.getMonth() + 1);
     
-    // 公告1
+    // Announcement 1
     await db.run(
       `INSERT INTO announcements (title, message, url, active, createdAt, expiresAt)
       VALUES (?, ?, ?, ?, ?, ?)`,
@@ -134,7 +134,7 @@ const createAnnouncements = async () => {
       ]
     );
     
-    // 公告2
+    // Announcement 2
     await db.run(
       `INSERT INTO announcements (title, message, url, active, createdAt, expiresAt)
       VALUES (?, ?, ?, ?, ?, ?)`,
@@ -148,20 +148,20 @@ const createAnnouncements = async () => {
       ]
     );
     
-    console.log('已创建2条示例公告');
+    console.log('2 example announcements created');
   } catch (error) {
-    console.error('创建公告失败:', error.message);
+    console.error('Failed to create announcements:', error.message);
   }
 };
 
-// 创建示例事件
+// Create example events
 const createEvents = async () => {
-  console.log('创建示例事件...');
+  console.log('Creating example events...');
   
   try {
     const now = new Date().toISOString();
     
-    // 事件1
+    // Event 1
     const event1Result = await db.run(
       `INSERT INTO events (title, imageUrl, summary, content, externalLink, published, createdAt, updatedAt)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -179,7 +179,7 @@ const createEvents = async () => {
     
     const event1Id = event1Result.lastID;
     
-    // 事件1的项目
+    // Event 1 items
     await db.run(
       `INSERT INTO event_items (eventId, name, content, iconUrl, position)
       VALUES (?, ?, ?, ?, ?)`,
@@ -204,7 +204,7 @@ const createEvents = async () => {
       ]
     );
     
-    // 事件2
+    // Event 2
     const event2Result = await db.run(
       `INSERT INTO events (title, imageUrl, summary, content, externalLink, published, createdAt, updatedAt)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -222,7 +222,7 @@ const createEvents = async () => {
     
     const event2Id = event2Result.lastID;
     
-    // 事件2的项目
+    // Event 2 items
     await db.run(
       `INSERT INTO event_items (eventId, name, content, iconUrl, position)
       VALUES (?, ?, ?, ?, ?)`,
@@ -235,13 +235,13 @@ const createEvents = async () => {
       ]
     );
     
-    console.log('已创建2个示例事件');
+    console.log('2 example events created');
   } catch (error) {
-    console.error('创建事件失败:', error.message);
+    console.error('Failed to create events:', error.message);
   }
 };
 
-// 运行初始化
+// Run initialization
 const initializeData = async () => {
   try {
     await clearTables();
@@ -250,13 +250,13 @@ const initializeData = async () => {
     await createAnnouncements();
     await createEvents();
     
-    console.log('数据库初始化完成!');
+    console.log('Database initialization completed!');
     process.exit(0);
   } catch (error) {
-    console.error('数据库初始化失败:', error);
+    console.error('Database initialization failed:', error);
     process.exit(1);
   }
 };
 
-// 执行初始化
+// Execute initialization
 initializeData(); 

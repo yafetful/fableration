@@ -34,7 +34,7 @@
   border-radius: 30px;
 }
 
-/* 加载状态样式 */
+/* Loading state styles */
 .community-content.loading {
   min-height: 400px;
   font-size: 18px;
@@ -44,7 +44,7 @@
   align-items: center;
 }
 
-/* 错误状态样式 */
+/* Error state styles */
 .community-content.error {
   min-height: 400px;
   font-size: 18px;
@@ -93,7 +93,7 @@
 
 .card-details Button {
   margin-top: auto;
-  /* 保证按钮在底部 */
+  /* Ensure button is at the bottom */
 }
 
 .card-title {

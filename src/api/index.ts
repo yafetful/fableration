@@ -1,4 +1,4 @@
-// API通信接口
+// API Interface
 const API_URL = '/api';
 
 interface User {
@@ -63,34 +63,34 @@ interface Event {
   items?: EventItem[];
 }
 
-// 获取身份验证令牌
+// Get authentication token
 const getToken = () => localStorage.getItem('token');
 
-// 创建带有身份验证的请求头
+// Create request headers with authentication
 const authHeaders = () => ({
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${getToken()}`
 });
 
-// API请求处理器
+// API request handler
 const api = {
-  // 博客API
+  // Blog API
   blogs: {
-    // 获取所有博客
+    // Get all blogs
     getAll: async (): Promise<Blog[]> => {
       const response = await fetch(`${API_URL}/blogs`);
       if (!response.ok) throw new Error('Failed to fetch blogs');
       return response.json();
     },
     
-    // 获取单个博客
+    // Get a single blog
     getById: async (id: string | number): Promise<Blog> => {
       const response = await fetch(`${API_URL}/blogs/${id}`);
       if (!response.ok) throw new Error('Failed to fetch blog');
       return response.json();
     },
     
-    // 创建博客
+    // Create a blog
     create: async (blog: Blog): Promise<Blog> => {
       const response = await fetch(`${API_URL}/blogs`, {
         method: 'POST',
@@ -106,7 +106,7 @@ const api = {
       return response.json();
     },
     
-    // 更新博客
+    // Update a blog
     update: async (id: string | number, blog: Blog): Promise<Blog> => {
       const response = await fetch(`${API_URL}/blogs/${id}`, {
         method: 'PUT',
@@ -122,7 +122,7 @@ const api = {
       return response.json();
     },
     
-    // 删除博客
+    // Delete a blog
     delete: async (id: string | number): Promise<void> => {
       const response = await fetch(`${API_URL}/blogs/${id}`, {
         method: 'DELETE',
@@ -136,30 +136,30 @@ const api = {
     }
   },
   
-  // 公告API
+  // Announcement API
   announcements: {
-    // 获取所有公告
+    // Get all announcements
     getAll: async (): Promise<Announcement[]> => {
       const response = await fetch(`${API_URL}/announcements`);
       if (!response.ok) throw new Error('Failed to fetch announcements');
       return response.json();
     },
     
-    // 获取活跃公告
+    // Get active announcements
     getActive: async (): Promise<Announcement[]> => {
       const response = await fetch(`${API_URL}/announcements/active`);
       if (!response.ok) throw new Error('Failed to fetch active announcements');
       return response.json();
     },
     
-    // 获取单个公告
+    // Get a single announcement
     getById: async (id: string | number): Promise<Announcement> => {
       const response = await fetch(`${API_URL}/announcements/${id}`);
       if (!response.ok) throw new Error('Failed to fetch announcement');
       return response.json();
     },
     
-    // 创建公告
+    // Create an announcement
     create: async (announcement: Announcement): Promise<Announcement> => {
       const response = await fetch(`${API_URL}/announcements`, {
         method: 'POST',
@@ -175,7 +175,7 @@ const api = {
       return response.json();
     },
     
-    // 更新公告
+    // Update an announcement
     update: async (id: string | number, announcement: Announcement): Promise<Announcement> => {
       const response = await fetch(`${API_URL}/announcements/${id}`, {
         method: 'PUT',
@@ -191,7 +191,7 @@ const api = {
       return response.json();
     },
     
-    // 删除公告
+    // Delete an announcement
     delete: async (id: string | number): Promise<void> => {
       const response = await fetch(`${API_URL}/announcements/${id}`, {
         method: 'DELETE',
@@ -205,30 +205,30 @@ const api = {
     }
   },
   
-  // 亮点API
+  // Highlight API
   highlights: {
-    // 获取所有亮点
+    // Get all highlights
     getAll: async (): Promise<Highlight[]> => {
       const response = await fetch(`${API_URL}/highlights`);
       if (!response.ok) throw new Error('Failed to fetch highlights');
       return response.json();
     },
     
-    // 获取活跃亮点
+    // Get active highlights
     getActive: async (): Promise<Highlight[]> => {
       const response = await fetch(`${API_URL}/highlights/active`);
       if (!response.ok) throw new Error('Failed to fetch active highlights');
       return response.json();
     },
     
-    // 获取单个亮点
+    // Get a single highlight
     getById: async (id: string | number): Promise<Highlight> => {
       const response = await fetch(`${API_URL}/highlights/${id}`);
       if (!response.ok) throw new Error('Failed to fetch highlight');
       return response.json();
     },
     
-    // 创建亮点
+    // Create a highlight
     create: async (highlight: Highlight): Promise<Highlight> => {
       const response = await fetch(`${API_URL}/highlights`, {
         method: 'POST',
@@ -244,7 +244,7 @@ const api = {
       return response.json();
     },
     
-    // 更新亮点
+    // Update a highlight
     update: async (id: string | number, highlight: Highlight): Promise<Highlight> => {
       const response = await fetch(`${API_URL}/highlights/${id}`, {
         method: 'PUT',
@@ -260,7 +260,7 @@ const api = {
       return response.json();
     },
     
-    // 删除亮点
+    // Delete a highlight
     delete: async (id: string | number): Promise<void> => {
       const response = await fetch(`${API_URL}/highlights/${id}`, {
         method: 'DELETE',
@@ -274,23 +274,23 @@ const api = {
     }
   },
   
-  // 事件API
+  // Event API
   events: {
-    // 获取所有事件
+    // Get all events
     getAll: async (): Promise<Event[]> => {
       const response = await fetch(`${API_URL}/events`);
       if (!response.ok) throw new Error('Failed to fetch events');
       return response.json();
     },
     
-    // 获取单个事件
+    // Get a single event
     getById: async (id: string | number): Promise<Event> => {
       const response = await fetch(`${API_URL}/events/${id}`);
       if (!response.ok) throw new Error('Failed to fetch event');
       return response.json();
     },
     
-    // 创建事件
+    // Create an event
     create: async (event: Event): Promise<Event> => {
       const response = await fetch(`${API_URL}/events`, {
         method: 'POST',
@@ -306,7 +306,7 @@ const api = {
       return response.json();
     },
     
-    // 更新事件
+    // Update an event
     update: async (id: string | number, event: Event): Promise<Event> => {
       const response = await fetch(`${API_URL}/events/${id}`, {
         method: 'PUT',
@@ -322,7 +322,7 @@ const api = {
       return response.json();
     },
     
-    // 删除事件
+    // Delete an event
     delete: async (id: string | number): Promise<void> => {
       const response = await fetch(`${API_URL}/events/${id}`, {
         method: 'DELETE',
@@ -336,9 +336,9 @@ const api = {
     }
   },
   
-  // 身份验证API
+  // Authentication API
   auth: {
-    // 登录
+    // Login
     login: async (email: string, password: string): Promise<{ token: string, user: User }> => {
       const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
@@ -356,17 +356,17 @@ const api = {
       return data;
     },
     
-    // 登出
+    // Logout
     logout: () => {
       localStorage.removeItem('token');
     },
     
-    // 检查是否已认证
+    // Check if authenticated
     isAuthenticated: () => {
       return !!getToken();
     },
     
-    // 修改密码
+    // Change password
     changePassword: async (currentPassword: string, newPassword: string): Promise<{ success: boolean, message: string }> => {
       const response = await fetch(`${API_URL}/auth/change-password`, {
         method: 'POST',
@@ -386,9 +386,9 @@ const api = {
     }
   },
   
-  // 文件上传API
+  // File upload API
   upload: {
-    // 上传事件图片
+    // Upload event image
     eventImage: async (file: File): Promise<{ fileUrl: string, fileName: string }> => {
       const formData = new FormData();
       formData.append('eventImage', file);
@@ -409,7 +409,7 @@ const api = {
       return response.json();
     },
     
-    // 上传亮点图片
+    // Upload highlight image
     highlightImage: async (file: File): Promise<{ fileUrl: string, fileName: string }> => {
       const formData = new FormData();
       formData.append('highlightImage', file);
@@ -430,7 +430,7 @@ const api = {
       return response.json();
     },
     
-    // 上传博客图片
+    // Upload blog image
     blogImage: async (file: File): Promise<{ fileUrl: string, fileName: string }> => {
       const formData = new FormData();
       formData.append('blogImage', file);
@@ -451,7 +451,7 @@ const api = {
       return response.json();
     },
     
-    // 上传图标图片
+    // Upload icon image
     iconImage: async (file: File): Promise<{ fileUrl: string, fileName: string }> => {
       const formData = new FormData();
       formData.append('iconImage', file);

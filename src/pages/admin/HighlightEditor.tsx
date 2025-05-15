@@ -70,10 +70,10 @@ const HighlightEditor: React.FC = () => {
         [name]: (e.target as HTMLInputElement).checked
       }));
     } else if (name === 'type') {
-      // 处理类型变更
+      // Handle type change
       const newType = value;
       
-      // 如果从视频切换到图片，处理内容换行
+      // If switching from video to image, handle content line breaks
       if (formData.type === 'video' && newType === 'image') {
         const singleLine = formData.title.replace(/\\n/g, ' ').replace(/\n/g, ' ');
         setFormData(prev => ({

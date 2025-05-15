@@ -27,23 +27,18 @@ const socials = [
 const Footer: React.FC = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   
-  // 监听窗口大小变化，确保背景容器大小正确
   useEffect(() => {
     const updateBgWrapperSize = () => {
       if (bgWrapperRef.current) {
-        // 确保背景容器高度与footer高度一致
         const footerHeight = bgWrapperRef.current.parentElement?.offsetHeight || 0;
         bgWrapperRef.current.style.height = `${footerHeight}px`;
       }
     };
     
-    // 初始调用一次
     updateBgWrapperSize();
     
-    // 添加窗口大小变化监听
     window.addEventListener('resize', updateBgWrapperSize);
     
-    // 清理函数
     return () => {
       window.removeEventListener('resize', updateBgWrapperSize);
     };

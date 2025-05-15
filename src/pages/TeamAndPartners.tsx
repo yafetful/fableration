@@ -5,7 +5,7 @@ import { InfoCard } from "../components/ui/InfoCard";
 import "./teamandpartners.css";
 import "../styles/animations.css";
 
-// 导入团队成员和合作伙伴的图像
+// Import team members and partners images
 import phiBeeImg from "../assets/images/team/PhiBee_Paige.png";
 import simonImg from "../assets/images/team/Simon_Harding.png";
 import garyImg from "../assets/images/team/Gary_Budden.png";
@@ -18,7 +18,7 @@ import miriamImg from "../assets/images/team/Dr_Miriam_Johnson.png";
 import lizImg from "../assets/images/team/Dr_Liz_Monument.png";
 import josephineImg from "../assets/images/team/Josephine_Monger.png";
 
-// 合作伙伴图像
+// Partner images
 import partner1Img from "../assets/images/Partners/1.png";
 import partner2Img from "../assets/images/Partners/2.png";
 import partner3Img from "../assets/images/Partners/3.png";
@@ -30,7 +30,7 @@ import partner8Img from "../assets/images/Partners/8.png";
 import partner9Img from "../assets/images/Partners/9.png";
 
 const TeamAndPartners: React.FC = () => {
-  // 创建各个部分的引用
+  // Create references for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const teamTitleRef = useRef<HTMLDivElement>(null);
   const featuredTeamGridRef = useRef<HTMLDivElement>(null);
@@ -38,32 +38,32 @@ const TeamAndPartners: React.FC = () => {
   const partnersTitleRef = useRef<HTMLDivElement>(null);
   const partnersGridRef = useRef<HTMLDivElement>(null);
   
-  // 创建卡片的引用
+  // Create references for cards
   const featuredCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const regularCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const partnerCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // 添加滚动监听，触发动画
+  // Add scroll listener to trigger animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // 添加visible类使动画触发
+            // Add visible class to trigger animation
             entry.target.classList.add("visible");
             
-            // 为已经可见的元素移除监听
+            // Remove observer for visible elements
             observer.unobserve(entry.target);
           }
         });
       },
       { 
-        threshold: 0.1,  // 当元素10%进入视口时触发
-        rootMargin: "0px 0px -50px 0px" // 调整触发范围，底部有50px的缓冲区
+        threshold: 0.1,  // Trigger when element is 10% in viewport
+        rootMargin: "0px 0px -50px 0px" // Adjust trigger range, 50px buffer at bottom
       }
     );
 
-    // 监听所有相关元素
+    // Observe all related elements
     const refs = [
       heroRef,
       teamTitleRef,
@@ -79,7 +79,7 @@ const TeamAndPartners: React.FC = () => {
       }
     });
     
-    // 监听每个卡片元素，创建卡片的逐个出现效果
+    // Observe each card element to create sequential appearance effect
     featuredCardRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
@@ -93,12 +93,12 @@ const TeamAndPartners: React.FC = () => {
     });
 
     return () => {
-      // 清理观察者
+      // Clean up observer
       observer.disconnect();
     };
   }, []);
 
-  // 主要团队成员数据（前三个成员）
+  // Main team members data (first three members)
   const featuredTeamMembers = [
     {
       id: 1,
@@ -126,7 +126,7 @@ const TeamAndPartners: React.FC = () => {
     },
   ];
 
-  // 普通团队成员数据
+  // Regular team members data
   const regularTeamMembers = [
     {
       id: 4,
@@ -192,7 +192,7 @@ const TeamAndPartners: React.FC = () => {
     },
   ];
 
-  // 合作伙伴数据
+  // Partners data
   const partners = [
     { id: 1, image: partner1Img, link: "https://www.influxpress.com/" },
     { id: 2, image: partner2Img, link: "https://www.leschenaultpress.com/" },
@@ -205,39 +205,39 @@ const TeamAndPartners: React.FC = () => {
     { id: 9, image: partner9Img, link: "https://deadinkbooks.com/" },
   ];
   
-  // 初始化引用数组
+  // Initialize references array
   useEffect(() => {
-    // 创建新的引用数组，长度与数据数组匹配
+    // Create new references array, length matches data array
     featuredCardRefs.current = Array(featuredTeamMembers.length).fill(null);
     regularCardRefs.current = Array(regularTeamMembers.length).fill(null);
     partnerCardRefs.current = Array(partners.length).fill(null);
   }, [featuredTeamMembers.length, regularTeamMembers.length, partners.length]);
 
-  // 计算动画延迟
+  // Calculate animation delay
   const getAnimationDelay = (index: number, baseDelay: number = 0) => {
-    // 基础延迟 + 卡片索引 * 100ms
+    // Base delay + card index * 100ms
     const delayValue = 300 + baseDelay + (index * 150);
     return `${delayValue}ms`;
   };
 
-  // 控制跑马灯的逻辑
+  // Control marquee logic
   useEffect(() => {
-    // 只在客户端运行
+    // Only run on client
     if (typeof window === 'undefined') return;
     
-    // 获取跑马灯元素
+    // Get marquee element
     const marqueeContent = document.querySelector('.partners-marquee-content') as HTMLElement | null;
     if (!marqueeContent) return;
     
-    // 调整动画速度 - 根据合作伙伴数量调整
+    // Adjust animation speed - adjust based on partner count
     const itemCount = partners.length;
-    const animationDuration = Math.max(15, itemCount * 3); // 最少15秒，每个合作伙伴3秒
+    const animationDuration = Math.max(15, itemCount * 3); // Minimum 15 seconds, each partner 3 seconds
     
     marqueeContent.style.animationDuration = `${animationDuration}s`;
     
-    // 窗口大小改变时调整
+    // Adjust when window size changes
     const handleResize = () => {
-      // 如果小于1024px，不需要处理跑马灯
+      // If less than 1024px, don't handle marquee
       if (window.innerWidth < 1024) return;
       
       const marqueeContainer = document.querySelector('.partners-marquee-container');
@@ -247,7 +247,7 @@ const TeamAndPartners: React.FC = () => {
     };
     
     window.addEventListener('resize', handleResize);
-    handleResize(); // 初始调用
+    handleResize(); // Initial call
     
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -279,7 +279,7 @@ const TeamAndPartners: React.FC = () => {
           <h2>Team</h2>
         </div>
 
-        {/* 主要团队成员 - 大图布局 */}
+        {/* Main team members - Large image layout */}
         <div
           ref={featuredTeamGridRef}
           className="featured-team-grid"
@@ -307,7 +307,7 @@ const TeamAndPartners: React.FC = () => {
           })}
         </div>
 
-        {/* 普通团队成员 - 小图布局 */}
+        {/* Regular team members - Small image layout */}
         <div
           ref={regularTeamGridRef}
           className="regular-team-grid"
@@ -345,7 +345,7 @@ const TeamAndPartners: React.FC = () => {
           <h2>Partners</h2>
         </div>
 
-        {/* PC端的跑马灯效果 */}
+        {/* PC marquee effect */}
         <div className="partners-marquee-container">
           <div className="partners-marquee">
             <div className="partners-marquee-content">
@@ -362,7 +362,7 @@ const TeamAndPartners: React.FC = () => {
                   </div>
                 </a>
               ))}
-              {/* 重复一遍内容，实现无限滚动 */}
+              {/* Repeat content to create infinite scroll */}
               {partners.map((partner) => (
                 <a 
                   key={`marquee-2-${partner.id}`}
@@ -380,7 +380,7 @@ const TeamAndPartners: React.FC = () => {
           </div>
         </div>
         
-        {/* 移动端的网格布局 */}
+        {/* Mobile grid layout */}
         <div
           ref={partnersGridRef}
           className="partners-grid-mobile"

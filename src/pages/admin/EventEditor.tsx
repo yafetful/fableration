@@ -4,7 +4,7 @@ import Sidebar from '../../components/dashboard/Sidebar';
 import api from '../../api';
 import type { Event, EventItem as ApiEventItem } from '../../api';
 
-// 添加API基础URL常量
+// Add API base URL constant
 const API_BASE_URL = '';
 
 interface FormEventItem {
@@ -27,7 +27,7 @@ const EventEditor: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
-  // 处理图片URL，如果是相对路径则加上API基础URL
+  // Process image URL, add API base URL if it's a relative path
   const getFullImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return '';
     if (imageUrl.startsWith('http')) return imageUrl;
@@ -54,17 +54,17 @@ const EventEditor: React.FC = () => {
   const [imageMethod, setImageMethod] = useState<'url' | 'upload'>('url');
   const [imageError, setImageError] = useState('');
   
-  // 监测表单是否被修改过
+  // Track if form has been modified
   const [isFormDirty, setIsFormDirty] = useState(false);
   
-  // 当表单状态改变时，将表单标记为已修改
+  // Mark form as modified when form state changes
   const markFormAsDirty = useCallback(() => {
     if (!isFormDirty) {
       setIsFormDirty(true);
     }
   }, [isFormDirty]);
   
-  // 在卸载组件时，如果表单有修改但未保存，显示确认对话框
+  // Show confirmation dialog when unmounting if form has unsaved changes
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       if (isFormDirty && !isSaving) {
@@ -81,7 +81,7 @@ const EventEditor: React.FC = () => {
     };
   }, [isFormDirty, isSaving]);
   
-  // Load event data if editing
+  // Form state should be unmodified after initial data load
   useEffect(() => {
     if (isEditing) {
       const fetchEvent = async () => {
@@ -281,7 +281,7 @@ const EventEditor: React.FC = () => {
     );
   };
   
-  // 处理导航回列表页面，如果有未保存的修改则显示确认对话框
+  // Handle navigation back to list page, show confirmation dialog if there are unsaved changes
   const handleNavigateBack = () => {
     if (isFormDirty && !isSaving) {
       if (window.confirm('You have unsaved changes. Are you sure you want to leave?')) {
@@ -292,6 +292,7 @@ const EventEditor: React.FC = () => {
     }
   };
   
+  // If there are image files to upload, handle upload first
   // Form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

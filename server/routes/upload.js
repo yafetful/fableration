@@ -7,11 +7,11 @@ import { fileURLToPath } from 'url';
 
 const router = express.Router();
 
-// 获取__dirname (ES模块中)
+// Get __dirname (ES module)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 确保上传目录存在
+// Ensure upload directory exists
 const createUploadDirs = () => {
   const uploadDir = path.join(__dirname, '../uploads');
   const eventImagesDir = path.join(uploadDir, 'events');
@@ -40,13 +40,13 @@ const createUploadDirs = () => {
   }
 };
 
-// 创建上传目录
+// Create upload directories
 createUploadDirs();
 
-// 配置存储
+// Configure storage
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    // 根据字段名确定文件保存目录
+    // Determine file save directory based on field name
     const uploadDir = path.join(__dirname, '../uploads');
     
     if (file.fieldname === 'eventImage') {
@@ -62,16 +62,16 @@ const storage = multer.diskStorage({
     }
   },
   filename: function(req, file, cb) {
-    // 生成唯一文件名，防止文件覆盖
+    // Generate unique filename to prevent file overwrite
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     const ext = path.extname(file.originalname);
     cb(null, file.fieldname + '-' + uniqueSuffix + ext);
   }
 });
 
-// 文件过滤器，只允许上传图片
+// File filter, only allow image uploads
 const fileFilter = (req, file, cb) => {
-  // 接受的图片类型
+  // Acceptable image types
   const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
   
   if (allowedTypes.includes(file.mimetype)) {
@@ -81,23 +81,23 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// 创建上传中间件
+// Create upload middleware
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 限制5MB
+    fileSize: 20 * 1024 * 1024, // Limit 20MB
   },
   fileFilter: fileFilter
 });
 
-// 事件图片上传接口
+// Event image upload interface
 router.post('/event-image', authenticate, upload.single('eventImage'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
     
-    // 构建可访问的URL
+    // Build accessible URL
     const host = req.get('host');
     const protocol = req.protocol;
     const fileUrl = `${protocol}://${host}/uploads/events/${req.file.filename}`;
@@ -112,14 +112,14 @@ router.post('/event-image', authenticate, upload.single('eventImage'), (req, res
   }
 });
 
-// 图标上传接口
+// Icon upload interface
 router.post('/icon-image', authenticate, upload.single('iconImage'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
     
-    // 构建可访问的URL
+    // Build accessible URL
     const host = req.get('host');
     const protocol = req.protocol;
     const fileUrl = `${protocol}://${host}/uploads/icons/${req.file.filename}`;
@@ -134,14 +134,14 @@ router.post('/icon-image', authenticate, upload.single('iconImage'), (req, res) 
   }
 });
 
-// 博客图片上传接口
+// Blog image upload interface
 router.post('/blog-image', authenticate, upload.single('blogImage'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
     
-    // 构建可访问的URL
+    // Build accessible URL
     const host = req.get('host');
     const protocol = req.protocol;
     const fileUrl = `${protocol}://${host}/uploads/blogs/${req.file.filename}`;
@@ -156,14 +156,14 @@ router.post('/blog-image', authenticate, upload.single('blogImage'), (req, res) 
   }
 });
 
-// Highlight图片上传接口
+// Highlight image upload interface
 router.post('/highlight-image', authenticate, upload.single('highlightImage'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
     
-    // 构建可访问的URL
+    // Build accessible URL
     const host = req.get('host');
     const protocol = req.protocol;
     const fileUrl = `${protocol}://${host}/uploads/highlights/${req.file.filename}`;
@@ -178,16 +178,16 @@ router.post('/highlight-image', authenticate, upload.single('highlightImage'), (
   }
 });
 
-// 错误处理中间件
+// Error handling middleware
 router.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
-    // Multer错误处理
+    // Multer error handling
     if (err.code === 'LIMIT_FILE_SIZE') {
-      return res.status(400).json({ message: 'File size too large. Maximum size is 5MB.' });
+      return res.status(400).json({ message: 'File size too large. Maximum size is 20MB.' });
     }
     return res.status(400).json({ message: err.message });
   } else if (err) {
-    // 其他错误
+    // Other errors
     return res.status(500).json({ message: err.message });
   }
   next();

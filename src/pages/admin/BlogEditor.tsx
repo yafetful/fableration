@@ -4,12 +4,12 @@ import Sidebar from '../../components/dashboard/Sidebar';
 import api from '../../api';
 import type { Blog } from '../../api';
 
-// 添加API基础URL常量
+// Add API base URL constant
 const API_BASE_URL = '';
 
 const categories = ['Blogs', 'News', 'Events'];
 
-// 处理图片URL，如果是相对路径则加上API基础URL
+// Process image URL, add API base URL if it's a relative path
 const getFullImageUrl = (imageUrl?: string) => {
   if (!imageUrl) return '';
   if (imageUrl.startsWith('http')) return imageUrl;
@@ -148,7 +148,7 @@ const BlogEditor: React.FC = () => {
     setError(null);
     
     try {
-      // 如果有图片文件需要上传，先处理上传
+      // If there are image files to upload, handle upload first
       let updatedImageUrl = formData.imageUrl;
       if (imageMethod === 'upload' && imageFile) {
         try {

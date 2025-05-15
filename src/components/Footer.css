@@ -167,6 +167,6 @@
 }
 
 .footer :global(.social-btn) {
-  /* 让按钮在footer里更规整 */
+  /* Make buttons in footer more organized */
   margin: 0;
 } 

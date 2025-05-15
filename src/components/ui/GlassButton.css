@@ -52,7 +52,6 @@
   height: auto;
 }
 
-/* 尺寸变体 */
 .glass-button.sm {
   width: 120px;
   height: 48px;
@@ -98,7 +97,6 @@
   height: 24px;
 }
 
-/* 主题变体 */
 .glass-button.primary {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(16px);
@@ -118,7 +116,6 @@
   color: #0038FF;
 }
 
-/* 悬停效果 */
 .glass-button:hover {
   transform: translateY(-2px);
   box-shadow: 0px 8px 25px rgba(0, 27, 121, 0.15);

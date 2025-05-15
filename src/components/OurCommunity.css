@@ -4,7 +4,7 @@
   position: absolute;
   background: #D7E6FF;
   overflow: visible;
-  --sidebar-width: calc((100% - 1440px) / 2); /* 计算侧边栏宽度 */
+  --sidebar-width: calc((100% - 1440px) / 2); /* Calculate sidebar width */
 }
 
 .our-community-content-wrapper {
@@ -18,10 +18,10 @@
   position: sticky;
   top: 0;
   padding-top: calc(14vh);
-  padding-bottom: calc(14vh); /* 使用视口高度的70%作为底部padding */
+  padding-bottom: calc(14vh); /* Use 70% of viewport height as bottom padding */
   transform: translateY(calc(50vh - 50%));
   z-index: 2;
-  will-change: transform; /* 优化动画性能 */
+  will-change: transform; /* Optimize animation performance */
 }
 
 .our-community-grid {
@@ -30,9 +30,9 @@
   position: relative;
   width: 100%;
   height: 480px;
-  overflow: hidden; /* 改为visible允许卡片旋转时显示完整 */
+  overflow: hidden; /* Change to visible to allow cards to rotate when displayed */
   padding-left: max(2rem, var(--sidebar-width));
-  will-change: transform; /* 优化动画性能 */
+  will-change: transform; /* Optimize animation performance */
 }
 
 .our-community-title-wrapper {
@@ -50,7 +50,7 @@
   margin: 0;
   color: #010821;
   position: relative;
-  z-index: 5; /* 确保标题在卡片上方 */
+  z-index: 5; /* Ensure title is above cards */
 }
 
 .our-community-text {
@@ -71,25 +71,25 @@
 .card-animation-container {
   position: absolute;
   width: 885px;
-  transform-origin: left center; /* 修改变换原点为左侧中心 */
-  will-change: transform, opacity; /* 优化动画性能 */
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* 添加弹性过渡效果 */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 添加阴影增强立体感 */
-  border-radius: 30px; /* 保持与卡片一致的圆角 */
+  transform-origin: left center; /* Change transform origin to left center */
+  will-change: transform, opacity; /* Optimize animation performance */
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* Add elastic transition effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Add shadow to enhance立体感 */
+  border-radius: 30px; /* Keep same card corner radius */
 }
 
 @media (max-width: 768px) {
   .our-community-container {
     position: relative;
     width: 100%;
-    height: auto; /* 在移动设备上不需要那么大的滚动高度 */
-    overflow-x: hidden; /* 防止水平溢出 */
+    height: auto; /* No need for large scroll height on mobile */
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
   
   .our-community-grid {
     overflow: hidden;
     padding: 16px;
-    flex-direction: column; /* 移动设备上改为垂直排列 */
+    flex-direction: column; /* Change to vertical排列 on mobile */
     height: auto;
   }
   
@@ -105,18 +105,18 @@
   }
   
   .card-animation-container {
-    position: relative; /* 在移动设备上不使用绝对定位 */
+    position: relative; /* Do not use absolute positioning on mobile */
     width: 100%;
     max-width: 500px;
     margin-bottom: 20px;
     box-shadow: none;
-    /* 移除阻止动画的规则 */
+    /* Remove rules preventing animation */
     /* transform: none !important; */
     /* opacity: 1 !important; */
   }
   
   .our-community-content-wrapper {
-    position: relative; /* 移动设备上取消粘性定位 */
+    position: relative; /* Do not use sticky positioning on mobile */
     height: auto;
     padding-bottom: 0;
     transform: none;

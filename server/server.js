@@ -13,7 +13,7 @@ import uploadRoutes from './routes/upload.js';
 // Load environment variables
 dotenv.config();
 
-// ES模块中获取__dirname
+// Get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// 静态文件服务
+// Static file service
 app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 // Routes

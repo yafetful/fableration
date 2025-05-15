@@ -12,10 +12,8 @@ const getFullImageUrl = (imageUrl?: string) => {
   return `${API_BASE_URL}${imageUrl}`;
 };
 
-// 处理展示标题/内容，处理换行符
 const displayTitleContent = (highlight: Highlight) => {
   if (highlight.type === 'video') {
-    // 对于视频类型，替换\n为实际换行，并且限制显示长度
     const content = highlight.title.replace(/\\n/g, '\n');
     const truncated = content.length > 50 ? content.substring(0, 50) + '...' : content;
     return (
@@ -24,7 +22,6 @@ const displayTitleContent = (highlight: Highlight) => {
       </div>
     );
   } else {
-    // 对于图片类型，正常显示标题
     return (
       <p className="text-sm font-medium text-indigo-600 truncate">
         {highlight.title}

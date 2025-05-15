@@ -23,7 +23,7 @@
   left: 0;
 }
 
-/* Announcement 样式覆盖 */
+/* Announcement style override */
 .announcement-wrapper {
   position: absolute;
   top: 120px;
@@ -117,7 +117,7 @@
     flex-direction: column;
   }
   
-  /* 移动端 Announcement 位置调整 */
+  /* Mobile Announcement position adjustment */
   .announcement-wrapper {
     top: 90px;
   }
@@ -183,7 +183,7 @@
     align-self: flex-start;
   }
   
-  /* 移除之前的特定调整，使用sm尺寸 */
+  /* Remove previous specific adjustments, use sm size */
   .glass-button {
     width: auto;
     height: auto;

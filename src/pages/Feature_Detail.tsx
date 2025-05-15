@@ -61,7 +61,7 @@ const Features: React.FC = () => {
   const [direction, setDirection] = useState<'up'|'down'|'left'|'right'>('up');
   const [nextIndex, setNextIndex] = useState<number|null>(null);
 
-  // 判断是否为移动端
+  // Check if mobile device
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   // Define all feature sections data
@@ -98,7 +98,7 @@ const Features: React.FC = () => {
     },
   ];
 
-  // 同步URL参数到当前索引
+  // Sync URL parameters to current index
   useEffect(() => {
     const parsedId = id ? parseInt(id, 10) : 0;
     if (!isNaN(parsedId) && parsedId >= 0 && parsedId < featureSections.length) {
@@ -106,12 +106,12 @@ const Features: React.FC = () => {
     }
   }, [id, featureSections.length]);
 
-  // 切换动画
+  // Toggle animation
   const handleSwitch = (targetIndex: number, dir: 'up'|'down'|'left'|'right') => {
     setDirection(dir);
     setAnimation('out');
     setNextIndex(targetIndex);
-    // 更新URL
+    // Update URL
     navigate(`/feature/${targetIndex}`);
   };
 
@@ -133,7 +133,7 @@ const Features: React.FC = () => {
     }
   };
 
-  // 动画结束后切换内容
+  // Switch content after animation ends
   const handleAnimationEnd = () => {
     if (animation === 'out' && nextIndex !== null) {
       setCurrentFeatureIndex(nextIndex);
@@ -144,37 +144,37 @@ const Features: React.FC = () => {
     }
   };
 
-  // 创建各个部分的引用
+  // Create references for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const featureSectionRef = useRef<HTMLDivElement>(null);
   const buttonSectionRef = useRef<HTMLDivElement>(null);
 
-  // 添加滚动监听，触发动画
+  // Add scroll listener to trigger animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            // 为已经可见的元素移除监听
+            // Remove observer for visible elements
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // 当元素20%进入视口时触发，底部有100px的缓冲区
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // Trigger when element is 20% in viewport, 100px buffer at bottom
     );
 
-    // 监听英雄区域
+    // Listen to hero area
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
 
-    // 监听特性区域
+    // Listen to feature area
     if (featureSectionRef.current) {
       observer.observe(featureSectionRef.current);
     }
 
-    // 监听按钮区域
+    // Listen to button area
     if (buttonSectionRef.current) {
       observer.observe(buttonSectionRef.current);
     }
@@ -187,7 +187,7 @@ const Features: React.FC = () => {
   // Get the current feature to display
   const currentFeature = featureSections[currentFeatureIndex];
 
-  // 动画className
+  // Animation className
   let animationClass = '';
   if (animation === 'out') {
     if (direction === 'up') animationClass = 'feature-slide-out-down';

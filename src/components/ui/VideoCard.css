@@ -88,7 +88,6 @@
   padding-left: 40px;
 }
 
-/* 所有文字默认隐藏，无论是否动画 */
 .video-card-text-line {
   display: inline-block;
   background: linear-gradient(135deg, #DE63FE 0%, #7291FF 35%, #0038FF 100%);
@@ -97,17 +96,15 @@
   -webkit-text-fill-color: transparent;
   margin-bottom: 5px;
   transform-origin: center center;
-  font-weight: 200; /* ExtraLight - 最终状态 */
-  opacity: 0; /* 默认不可见，直到动画完成 */
+  font-weight: 200;
+  opacity: 0;
 }
 
-/* 动画控制 */
 .video-card-text-line.animate {
-  opacity: 0; /* 动画开始时不可见 */
+  opacity: 0;
   transform: translateY(25px) scale(1.5);
 }
 
-/* 900: Black */
 .video-card-text-line.animate.weight-900 {
   animation: textFadeIn-900 1s ease-out forwards;
 }
@@ -127,7 +124,6 @@
   }
 }
 
-/* 响应式布局 */
 @media (max-width: 768px) {
   .video-card-content {
     flex-direction: column;

@@ -1,4 +1,4 @@
-/* 整体容器样式 */
+/* Overall container styles */
 .team-container {
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-/* 标题样式 */
+/* Title styles */
 .team-hero-text {
   display: flex;
   justify-content: left;
@@ -55,7 +55,7 @@
   position: relative;
 }
 
-/* 部分标题 */
+/* Section title */
 .section-title {
   text-align: center;
   margin: 60px 0 40px;
@@ -68,7 +68,7 @@
   margin: 0;
 }
 
-/* 主要团队网格布局 - 大图 */
+/* Main team grid layout - large images */
 .featured-team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -76,7 +76,7 @@
   margin-bottom: 60px;
 }
 
-/* 普通团队网格布局 - 小图 */
+/* Regular team grid layout - small images */
 .regular-team-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -84,31 +84,31 @@
   margin-bottom: 60px;
 }
 
-/* 合作伙伴部分 */
+/* Partners section */
 .partners-section {
   padding: 40px 0 80px;
   margin-top: 40px;
 }
 
-/* 跑马灯容器 */
+/* Marquee container */
 .partners-marquee-container {
   width: 100%;
   overflow: visible;
   position: relative;
-  display: none; /* 默认隐藏 */
+  display: none; /* Default hidden */
 }
 
 .partners-marquee-visible {
-  display: block; /* JavaScript控制显示 */
+  display: block; /* JavaScript control display */
 }
 
 @media (min-width: 1025px) {
   .partners-marquee-container {
-    display: block; /* PC端显示 */
+    display: block; /* PC display */
   }
 }
 
-/* 跑马灯样式 */
+/* Marquee styles */
 .partners-marquee {
   width: 100%;
   overflow: hidden;
@@ -119,27 +119,27 @@
   display: flex;
   animation: marquee 30s linear infinite;
   width: max-content;
-  will-change: transform; /* 提高动画性能 */
+  will-change: transform; /* Improve animation performance */
   height: 100%;
   align-items: center;
 }
 
-/* 当悬停时暂停动画 */
+/* Pause animation when hovered */
 .partners-marquee-container:hover .partners-marquee-content {
   animation-play-state: paused;
 }
 
-/* 跑马灯动画 */
+/* Marquee animation */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* 只移动一半的宽度，因为我们复制了内容 */
+    transform: translateX(-50%); /* Move only half the width, because we duplicated the content */
   }
 }
 
-/* 合作伙伴卡片样式 */
+/* Partners card styles */
 .partner-card-link {
   text-decoration: none;
   display: block;
@@ -168,7 +168,7 @@
 
 }
 
-/* 动画效果 */
+/* Animation effect */
 .opacity-0 {
   opacity: 0;
   transform: translateY(30px);
@@ -181,7 +181,7 @@
   transform: translateY(0);
 }
 
-/* 卡片容器样式 */
+/* Card container styles */
 .card-container,
 .partner-card-container {
   opacity: 0;
@@ -196,7 +196,7 @@
   transform: translateY(0);
 }
 
-/* 延迟的类 */
+/* Delayed class */
 [data-delay="delay-200"] {
   transition-delay: 0.2s;
 }
@@ -213,7 +213,7 @@
   transition-delay: 0.8s;
 }
 
-/* 响应式样式 */
+/* Responsive styles */
 
 @media (max-width: 768px) {
   .team-header-content{
@@ -278,7 +278,7 @@
   }
 }
 
-/* 移动端网格布局 - 默认隐藏 */
+/* Mobile grid layout - default hidden */
 .partners-grid-mobile {
   display: none;
   grid-template-columns: repeat(3, 1fr);
@@ -292,14 +292,14 @@
   margin: 0;
 }
 
-/* 媒体查询 */
+/* Media query */
 @media (max-width: 1024px) {
   .partners-marquee-container {
-    display: none; /* 隐藏PC端跑马灯 */
+    display: none; /* Hide PC marquee */
   }
   
   .partners-grid-mobile {
-    display: grid; /* 显示移动端网格 */
+    display: grid; /* Show mobile grid */
     grid-template-columns: repeat(3, 1fr);
   }
 }

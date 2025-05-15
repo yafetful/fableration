@@ -8,7 +8,6 @@ RUN npm install
 
 COPY . .
 
-# 创建uploads目录
 RUN mkdir -p ./uploads
 
 EXPOSE 3001

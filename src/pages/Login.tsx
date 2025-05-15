@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-// 登录页面
+// Login page
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('admin@fableration.com'); // 默认填入管理员邮箱
+  const [email, setEmail] = useState('admin@fableration.com'); // Default admin email
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,16 +17,16 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      // 使用上下文的登录方法
+      // Use login method from context
       await login(email, password);
-      // 登录成功后跳转到管理面板
+      // Login successful, redirect to admin panel
       navigate('/admin');
     } catch (err) {
-      // 显示错误信息
+      // Display error message
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('登录失败，请重试');
+        setError('Login failed, please try again');
       }
     } finally {
       setLoading(false);
@@ -38,17 +38,17 @@ const Login: React.FC = () => {
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-            管理员登录
+            Admin Login
           </h1>
           <p className="mt-2 text-sm text-gray-600">
-            请输入管理员账号和密码
+            Please enter your admin account and password
           </p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              邮箱
+              Email
             </label>
             <div className="mt-1">
               <input
@@ -66,7 +66,7 @@ const Login: React.FC = () => {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              密码
+              Password
             </label>
             <div className="mt-1">
               <input
@@ -94,7 +94,7 @@ const Login: React.FC = () => {
               disabled={loading}
               className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              {loading ? '登录中...' : '登录'}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </div>
         </form>

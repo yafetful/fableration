@@ -172,7 +172,6 @@
   max-width: initial;
 }
 
-/* 自定义动画类 */
 .animate-fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
@@ -194,7 +193,6 @@
   opacity: 0;
 }
 
-/* 延迟类 */
 .delay-0 {
   animation-delay: 0s;
 }
@@ -215,7 +213,6 @@
   animation-delay: 0.4s;
 }
 
-/* 动画关键帧 */
 @keyframes fadeIn {
   from {
     opacity: 0;

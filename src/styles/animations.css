@@ -1,4 +1,4 @@
-/* 淡入动画 */
+/* Fade in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -10,7 +10,7 @@
   }
 }
 
-/* 为绝对定位元素专门设计的淡入动画，保持X轴位置 */
+/* Fade in animation specifically designed for absolutely positioned elements, maintaining X-axis position */
 @keyframes fadeInAbsolute {
   from {
     opacity: 0;
@@ -22,7 +22,7 @@
   }
 }
 
-/* 从左侧滑入 */
+/* Slide in from left */
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -34,7 +34,7 @@
   }
 }
 
-/* 从右侧滑入 */
+/* Slide in from right */
 @keyframes slideInRight {
   from {
     opacity: 0;
@@ -46,7 +46,7 @@
   }
 }
 
-/* 放大淡入 */
+/* Scale up fade in */
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -58,7 +58,7 @@
   }
 }
 
-/* 旋转淡入 */
+/* Rotate fade in */
 @keyframes rotateIn {
   from {
     opacity: 0;
@@ -70,7 +70,7 @@
   }
 }
 
-/* 弹跳淡入 */
+/* Bounce fade in */
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -134,7 +134,7 @@
   }
 }
 
-/* 通用动画类 */
+/* Common animation classes */
 .animate-slide-up {
   animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   z-index: 2;
@@ -145,7 +145,7 @@
   z-index: 1;
 }
 
-/* 反向滚动动画类 */
+/* Reverse scroll animation class */
 .animate-slide-up-reverse {
   animation: slideOutDown 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   z-index: 1;
@@ -180,7 +180,7 @@
   animation: bounceIn 0.8s ease-out forwards;
 }
 
-/* 动画延迟类 */
+/* Animation delay classes */
 .delay-100 {
   animation-delay: 100ms;
 }
@@ -301,7 +301,7 @@
   animation-delay: 3000ms;
 }
 
-/* 初始不可见，用于等待动画开始 */
+/* Initially invisible, waiting for animation to start */
 .opacity-0 {
   opacity: 0;
 }

@@ -25,7 +25,7 @@ export const Hero = () => {
       });
     }
     
-    // 检测是否为移动设备
+    // Detect if it's a mobile device
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -38,10 +38,10 @@ export const Hero = () => {
     };
   }, []);
 
-  // 在视频结束后，显示元素并添加动画
+  // After video ends, show elements and add animation
   useEffect(() => {
     if (videoEnded) {
-      // 延迟一小段时间后显示元素，以便动画生效
+      // Delay showing elements slightly to ensure animation works
       const timer = setTimeout(() => {
         setElementsVisible(true);
       }, 100);
@@ -50,7 +50,7 @@ export const Hero = () => {
     }
   }, [videoEnded]);
 
-  // 动画结束后移除动画类，保证模糊生效
+  // After animation ends, remove animation class to ensure blur effect
   useEffect(() => {
     if (!elementsVisible) return;
     const items = document.querySelectorAll('.hero-social-item');

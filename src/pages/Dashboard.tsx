@@ -10,17 +10,17 @@ const Dashboard: React.FC = () => {
     highlights: 0
   });
   
-  // 获取统计数据
+  // Get statistics data
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        // 获取博客数量
+        // Get blog count
         const blogs = await api.blogs.getAll();
-        // 获取公告数量
+        // Get announcement count
         const announcements = await api.announcements.getAll();
-        // 获取事件数量
+        // Get event count
         const events = await api.events.getAll();
-        // 获取高亮数量
+        // Get highlight count
         const highlights = await api.highlights.getAll();
         
         setStats({

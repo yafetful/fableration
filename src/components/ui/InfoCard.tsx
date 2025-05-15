@@ -35,20 +35,16 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   const isModern = variant === 'modern';
   const isTeam = variant === 'team';
   
-  // 处理内容，所有内容都支持\n换行格式化，并将 [info@fableration.com] 转为 mailto 链接
   const renderContent = () => {
-    // 将内容按换行符分割
     const lines = content.split('\n');
     const contentElements = lines.map((line, index) => {
       const trimmedLine = line.trim();
       if (trimmedLine === '') {
-        return null; // 忽略空行
+        return null;
       }
-      // 检查是否包含 [info@fableration.com]
       const emailMatch = trimmedLine.match(/\[info@fableration.com\]/);
       let lineNode: React.ReactNode = trimmedLine;
       if (emailMatch) {
-        // 替换为 mailto 链接
         lineNode = (
           <>
             {trimmedLine.split(/\[info@fableration.com\]/).map((part, i, arr) => (
@@ -77,7 +73,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         );
       }
       if (isTeam && trimmedLine.startsWith('•')) {
-        // 移除•符号，因为我们会在CSS中添加
         const itemText = trimmedLine.substring(1).trim();
         return (
           <div key={index} className="list-item">
@@ -87,7 +82,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
       } else {
         return <p key={index} className="info-card-text">{lineNode}</p>;
       }
-    }).filter(Boolean); // 过滤掉null值
+    }).filter(Boolean);
     return <>{contentElements}</>;
   };
   

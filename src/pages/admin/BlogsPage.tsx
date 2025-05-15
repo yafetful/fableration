@@ -6,10 +6,10 @@ import BlogList from '../../components/dashboard/BlogList';
 const BlogsPage: React.FC = () => {
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* 侧边栏 */}
+      {/* Sidebar */}
       <Sidebar />
       
-      {/* 主内容区 */}
+      {/* Main content area */}
       <div className="flex-1 overflow-auto">
         <header className="bg-white shadow">
           <div className="flex items-center justify-between px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">

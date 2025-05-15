@@ -12,12 +12,12 @@ export const Announcement: React.FC = () => {
   useEffect(() => {
     const fetchAnnouncement = async () => {
       try {
-        // 获取活跃的公告
+        // Get active announcements
         const announcements = await api.announcements.getActive();
 
-        // 如果有公告，取最新的一条
+        // If there are announcements, get the latest one
         if (announcements && announcements.length > 0) {
-          // 可以根据日期排序，确保获取最新的
+          // Sort by date to ensure getting the latest
           const latestAnnouncement = announcements.sort(
             (a, b) =>
               new Date(b.createdAt || "").getTime() -
@@ -36,7 +36,7 @@ export const Announcement: React.FC = () => {
     fetchAnnouncement();
   }, []);
 
-  // 如果没有公告或正在加载，不显示组件
+  // If there are no announcements or loading, don't display the component
   if (loading || !announcement) {
     return null;
   }

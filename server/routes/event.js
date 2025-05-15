@@ -4,7 +4,7 @@ import { authenticate } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// 获取所有事件
+// Get all events
 router.get('/', async (req, res) => {
   try {
     const events = await db.all(`
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 获取单个事件及其项目
+// Get a single event and its items
 router.get('/:id', async (req, res) => {
   try {
     const event = await db.get('SELECT * FROM events WHERE id = ?', [req.params.id]);
@@ -30,13 +30,13 @@ router.get('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Event not found' });
     }
     
-    // 获取事件项目
+    // Get event items
     const eventItems = await db.all(
       'SELECT * FROM event_items WHERE eventId = ? ORDER BY position ASC',
       [event.id]
     );
     
-    // 合并事件和项目
+    // Merge event and items
     const result = {
       ...event,
       items: eventItems
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// 创建新事件 (需要认证)
+// Create a new event (requires authentication)
 router.post('/', authenticate, async (req, res) => {
   try {
     const { title, imageUrl, summary, content, externalLink, published, items = [] } = req.body;
@@ -57,11 +57,11 @@ router.post('/', authenticate, async (req, res) => {
       return res.status(400).json({ message: 'Title and summary are required' });
     }
     
-    // 事务操作
+    // Transaction operation
     try {
       const now = new Date().toISOString();
       
-      // 创建事件
+      // Create event
       const eventResult = await db.run(
         `INSERT INTO events (title, imageUrl, summary, content, externalLink, published, createdAt, updatedAt)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -79,7 +79,7 @@ router.post('/', authenticate, async (req, res) => {
       
       const eventId = eventResult.lastID;
       
-      // 添加事件项目
+      // Add event items
       if (items && items.length > 0) {
         for (let index = 0; index < items.length; index++) {
           const item = items[index];
@@ -97,7 +97,7 @@ router.post('/', authenticate, async (req, res) => {
         }
       }
       
-      // 获取完整的事件数据
+      // Get full event data
       const newEvent = await db.get('SELECT * FROM events WHERE id = ?', [eventId]);
       const eventItems = await db.all(
         'SELECT * FROM event_items WHERE eventId = ? ORDER BY position ASC',
@@ -118,13 +118,13 @@ router.post('/', authenticate, async (req, res) => {
   }
 });
 
-// 更新事件 (需要认证)
+// Update event (requires authentication)
 router.put('/:id', authenticate, async (req, res) => {
   try {
     const { title, imageUrl, summary, content, externalLink, published, items = [] } = req.body;
     const { id } = req.params;
     
-    // 检查事件是否存在
+    // Check if event exists
     const event = await db.get('SELECT * FROM events WHERE id = ?', [id]);
     
     if (!event) {
@@ -135,11 +135,11 @@ router.put('/:id', authenticate, async (req, res) => {
       return res.status(400).json({ message: 'Title and summary are required' });
     }
     
-    // 事务操作
+    // Transaction operation
     try {
       const now = new Date().toISOString();
       
-      // 更新事件
+      // Update event
       await db.run(
         `UPDATE events 
         SET title = ?, imageUrl = ?, summary = ?, content = ?, externalLink = ?, published = ?, updatedAt = ?
@@ -156,10 +156,10 @@ router.put('/:id', authenticate, async (req, res) => {
         ]
       );
       
-      // 删除所有现有的事件项目
+      // Delete all existing event items
       await db.run('DELETE FROM event_items WHERE eventId = ?', [id]);
       
-      // 添加新的事件项目
+      // Add new event items
       if (items && items.length > 0) {
         for (let index = 0; index < items.length; index++) {
           const item = items[index];
@@ -177,7 +177,7 @@ router.put('/:id', authenticate, async (req, res) => {
         }
       }
       
-      // 获取更新后的事件数据
+      // Get updated event data
       const updatedEvent = await db.get('SELECT * FROM events WHERE id = ?', [id]);
       const eventItems = await db.all(
         'SELECT * FROM event_items WHERE eventId = ? ORDER BY position ASC',
@@ -198,19 +198,19 @@ router.put('/:id', authenticate, async (req, res) => {
   }
 });
 
-// 删除事件 (需要认证)
+// Delete event (requires authentication)
 router.delete('/:id', authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     
-    // 检查事件是否存在
+    // Check if event exists
     const event = await db.get('SELECT * FROM events WHERE id = ?', [id]);
     
     if (!event) {
       return res.status(404).json({ message: 'Event not found' });
     }
     
-    // 由于设置了外键约束，删除事件会自动删除相关的事件项目
+    // Since foreign key constraints are set, deleting an event will automatically delete related event items
     await db.run('DELETE FROM events WHERE id = ?', [id]);
     
     res.json({ message: 'Event deleted successfully' });

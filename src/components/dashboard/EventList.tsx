@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api';
 import type { Event } from '../../api';
 
-const API_BASE_URL = ''; // 添加API基础URL常量
+const API_BASE_URL = '';
 
 const EventList: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -11,14 +11,12 @@ const EventList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 处理图片URL，如果是相对路径则加上API基础URL
   const getFullImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return '';
     if (imageUrl.startsWith('http')) return imageUrl;
     return `${API_BASE_URL}${imageUrl}`;
   };
 
-  // Load event data
   useEffect(() => {
     const fetchEvents = async () => {
       try {

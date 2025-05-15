@@ -24,12 +24,10 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   
-  // 处理菜单动画
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
     } else {
-      // 延迟隐藏，等待动画完成
       const timer = setTimeout(() => {
         setIsVisible(false);
       }, 300);
@@ -37,7 +35,6 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
     }
   }, [isOpen]);
   
-  // Close menu when user presses escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -47,7 +44,6 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
     
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      // Prevent body scrolling when menu is open
       document.body.style.overflow = 'hidden';
     }
     
@@ -57,7 +53,6 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
     };
   }, [isOpen, onClose]);
   
-  // Close menu on resize if screen becomes desktop size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isOpen) {

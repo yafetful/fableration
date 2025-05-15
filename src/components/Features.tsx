@@ -80,20 +80,20 @@ export const Features: React.FC = () => {
 
   // When any card becomes visible, check if all cards are visible to show the button
   useEffect(() => {
-    // 检查所有卡片是否都已显示
+    // Check if all cards are visible
     const allCardsVisible = Array.from(
       { length: topFeatures.length + bottomFeatures.length },
       (_, i) => visibleItems[i]
     ).every(Boolean);
 
-    // 如果所有卡片都可见，则在延迟后显示按钮
+    // If all cards are visible, show the button after a delay
     if (allCardsVisible) {
       const timer = setTimeout(() => {
         setVisibleItems(prev => ({
           ...prev,
           [buttonIndex]: true
         }));
-      }, 800); // 所有卡片显示后再等待800ms才显示按钮
+      }, 800); // Show button after all cards are visible, after a delay of 800ms
       
       return () => clearTimeout(timer);
     }
