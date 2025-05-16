@@ -13,10 +13,10 @@ import andrewImg from "../assets/images/team/Andrew_Zhou.png";
 import lisaImg from "../assets/images/team/Lisa_Wade.png";
 import heathImg from "../assets/images/team/Heath_Donald.png";
 import arianImg from "../assets/images/team/Arian_Sohi.png";
-import samanthaImg from "../assets/images/team/Prof_Samantha_Rayner.png";
-import miriamImg from "../assets/images/team/Dr_Miriam_Johnson.png";
-import lizImg from "../assets/images/team/Dr_Liz_Monument.png";
-import josephineImg from "../assets/images/team/Josephine_Monger.png";
+// import samanthaImg from "../assets/images/team/Prof_Samantha_Rayner.png";
+// import miriamImg from "../assets/images/team/Dr_Miriam_Johnson.png";
+// import lizImg from "../assets/images/team/Dr_Liz_Monument.png";
+// import josephineImg from "../assets/images/team/Josephine_Monger.png";
 
 // Partner images
 import partner1Img from "../assets/images/Partners/1.png";
