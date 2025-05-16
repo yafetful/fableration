@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './Community.css';
 import { Button } from './ui/Button';
 import api from '../api';
@@ -19,6 +19,12 @@ const getFullIconUrl = (iconUrl?: string) => {
   if (!iconUrl) return '';
   if (iconUrl.startsWith('http')) return iconUrl;
   return `${API_BASE_URL}${iconUrl}`;
+};
+
+// 检测设备是否为移动设备
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+         (window.innerWidth <= 768);
 };
 
 interface CommunityProps {
@@ -113,7 +119,18 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
               width="100%" 
               onClick={() => {
                 if (event.externalLink) {
-                  window.location.href = event.externalLink;
+                  if (isMobileDevice()) {
+                    // 移动设备：先尝试打开新窗口，失败则在当前窗口打开
+                    const newWindow = window.open(event.externalLink, '_blank');
+                    
+                    // 如果window.open被阻止或返回null，则使用location.href
+                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                      window.location.href = event.externalLink;
+                    }
+                  } else {
+                    // PC端：直接打开新窗口
+                    window.open(event.externalLink, '_blank');
+                  }
                 }
               }}
             >

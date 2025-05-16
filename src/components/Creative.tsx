@@ -22,6 +22,7 @@ export const Creative = ({ isSectionVisible }: { isSectionVisible: boolean }) =>
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const lastScrollTime = useRef<number>(0);
   const [sectionInViewport, setSectionInViewport] = useState(false);
+  const [showArrow, setShowArrow] = useState(false);
 
   const slides: SlideContent[] = [
     {
@@ -68,11 +69,24 @@ export const Creative = ({ isSectionVisible }: { isSectionVisible: boolean }) =>
       const now = Date.now();
       if (now - lastScrollTime.current < 100) return;
       lastScrollTime.current = now;
+      
       const containerRect = containerRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
+      
+      // 检查组件是否在视口内
+      const isInView = containerRect.bottom > 0 && 
+                       containerRect.top < viewportHeight;
+      
+      // 如果组件即将完全离开视口（底部即将消失），则隐藏箭头
+      const isAboutToLeave = containerRect.bottom < viewportHeight * 1.2;
+
+      // 更新箭头显示状态
+      setShowArrow(isInView && !isAboutToLeave);
+      
       const topThreshold = viewportHeight * 0.3;
       const isTopInThreshold = containerRect.top <= topThreshold;
       setSectionInViewport(isTopInThreshold);
+      
       if (!isTopInThreshold) return;
       const containerHeight = containerRef.current.clientHeight;
       const scrollProgress = 1 - (containerRect.top + containerHeight) / (viewportHeight + containerHeight);
@@ -165,9 +179,11 @@ export const Creative = ({ isSectionVisible }: { isSectionVisible: boolean }) =>
           )}
         </div>
         {/* Bottom center down arrow */}
-        <div className="creative-bottom-arrow">
-          <img src={arrowDown} alt="Scroll Down" className="down-arrow-svg" />
-        </div>
+        {showArrow && (
+          <div className="creative-bottom-arrow">
+            <img src={arrowDown} alt="Scroll Down" className="down-arrow-svg" />
+          </div>
+        )}
     </div>
   );
 };
