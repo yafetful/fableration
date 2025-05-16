@@ -21,7 +21,7 @@ const OurCommunity: React.FC = () => {
       subtitle: "Readers",
       title: "Access Without Overload: Cut Through the Fog.",
       content:
-        "Today's algorithms focus on what makes the most money for their corporate owner, not on the quality of the book or what readers would really like to read. Fableration changes this with a groundbreaking AI discovery function.\n Fableration allows readers to break free from manipulative algorithms and the mindless scrolling they encourage. It allows readers to find and consume the knowledge or entertainment they seek, without losing the ease of digital convenience.\n Fableration also recognises when readers may have been hitting the socials a bit hard. It offers a friendly suggestion that they might want to break away from doom scrolling and read a book!",
+        "Today's algorithms focus on what makes the most money for their corporate owner, not on the quality of the book or what readers would really like to read. Fableration changes this with a groundbreaking AI discovery function.\n\n Fableration allows readers to break free from manipulative algorithms and the mindless scrolling they encourage. It allows readers to find and consume the knowledge or entertainment they seek, without losing the ease of digital convenience.\n\n Fableration also recognises when readers may have been hitting the socials a bit hard. It offers a friendly suggestion that they might want to break away from doom scrolling and read a book!",
       link: "/ourcommunity/0",
       target: "_self",
     },
@@ -30,7 +30,7 @@ const OurCommunity: React.FC = () => {
       subtitle: "Authors",
       title: "Create Without Constraints. Set your writing free.",
       content:
-        "Create Without Constraints. Set your writing free. Most writers have at some stage been asked to make changes to their manuscript to reflect someone else's view of the market. At Fableration, we want writers to write the story they want to write, not constrain their creativity.\n The odds are stacked against any wannabe author. But odds are a symbol of luck or chance. On Fableration, finding an audience is a science not a lottery.\n Fableration creates authentic connections between writers and readers. These are the key to impact, audience and success.",
+        "Create Without Constraints. Set your writing free. Most writers have at some stage been asked to make changes to their manuscript to reflect someone else's view of the market. At Fableration, we want writers to write the story they want to write, not constrain their creativity.\n\n The odds are stacked against any wannabe author. But odds are a symbol of luck or chance. On Fableration, finding an audience is a science not a lottery.\n\n Fableration creates authentic connections between writers and readers. These are the key to impact, audience and success.",
       link: "/ourcommunity/1",
       target: "_self",
     },
@@ -39,7 +39,7 @@ const OurCommunity: React.FC = () => {
       subtitle: "Publisher",
       title: "Publish Smarter. Lose the Risk, Not the Potential.",
       content:
-        "Traditional publishing is a high-risk, low reward endeavour for publishers and the profits from the books that do sell in high volumes offset the losses from the rest.\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion. This reduces the risk and encourages publishers to take a chance on manuscripts from emerging writers.\n We want to work with publishers to help transform the industry. So if you're a publisher and would like to know more about Fableration, contact us [info@fableration.com] today.",
+        "Traditional publishing is a high-risk, low reward endeavour for publishers and the profits from the books that do sell in high volumes offset the losses from the rest.\n\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion. This reduces the risk and encourages publishers to take a chance on manuscripts from emerging writers.\n\n We want to work with publishers to help transform the industry. So if you're a publisher and would like to know more about Fableration, contact us [info@fableration.com] today.",
       link: "/ourcommunity/2",
       target: "_self",
     },

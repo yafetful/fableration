@@ -129,7 +129,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const triggerAction = useCallback(() => {
       if (variant === "slide" && onClick) {
-        onClick(new MouseEvent('click', { bubbles: true }) as any);
+        onClick(undefined as any);
       }
     }, [onClick, variant]);
 

@@ -158,38 +158,38 @@ const TeamAndPartners: React.FC = () => {
       description:
         "• 12 years of experience in UX/UI design, animation, and brand storytelling\n• Known for transforming big ideas into intuitive, character-driven experiences\n• Bridges technology and creativity to make every user feel part of the story",
     },
-    {
-      id: 8,
-      name: "Prof. Samantha Rayner",
-      role: "Advisor",
-      image: samanthaImg,
-      description:
-        "• Professor Of Publishing And Book Cultures, Vice Dean Wellbeing At University College London\n• Co-Director Of The Bookselling Research Network\n• Research Fellow At The Institute Of English Studies\n• General Editor For Cambridge University Press Publishing Mini-Monographs",
-    },
-    {
-      id: 9,
-      name: "Dr Miriam Johnson",
-      role: "Advisor",
-      image: miriamImg,
-      description:
-        "• Founder of The Istanbul Review and second-hand bookseller\n• Worked with Scottish PEN and Scottish Book Trust\n• Developed Echoes of the City, an immersive literature project with Edinburgh UNESCO City of Literature\n• Research focuses on creative writing, publishing, and social media's impact on authorship and digital communities",
-    },
-    {
-      id: 10,
-      name: "Dr Liz Monument",
-      role: "Advisor",
-      image: lizImg,
-      description:
-        "• PhD in creative writing\n• Professional editor and writing coach\n• Freelance editor with clients like HarperCollins and Jericho Writers\n• Fabel community contributor, developing AI quality control for author submissions and guiding Fabel's leadership on the publishing market",
-    },
-    {
-      id: 11,
-      name: "Josephine Monger",
-      role: "Advisor",
-      image: josephineImg,
-      description:
-        "• Specialist In Customer Centricity And Strategy Development\n• 20+ Years Of Experience In Executive And Leadership Roles In Prominent Australian Businesses\n• Guides Fabel's Strategy To Ensure The Best Customer Experience On The Platform",
-    },
+    // {
+    //   id: 8,
+    //   name: "Prof. Samantha Rayner",
+    //   role: "Advisor",
+    //   image: samanthaImg,
+    //   description:
+    //     "• Professor Of Publishing And Book Cultures, Vice Dean Wellbeing At University College London\n• Co-Director Of The Bookselling Research Network\n• Research Fellow At The Institute Of English Studies\n• General Editor For Cambridge University Press Publishing Mini-Monographs",
+    // },
+    // {
+    //   id: 9,
+    //   name: "Dr Miriam Johnson",
+    //   role: "Advisor",
+    //   image: miriamImg,
+    //   description:
+    //     "• Founder of The Istanbul Review and second-hand bookseller\n• Worked with Scottish PEN and Scottish Book Trust\n• Developed Echoes of the City, an immersive literature project with Edinburgh UNESCO City of Literature\n• Research focuses on creative writing, publishing, and social media's impact on authorship and digital communities",
+    // },
+    // {
+    //   id: 10,
+    //   name: "Dr Liz Monument",
+    //   role: "Advisor",
+    //   image: lizImg,
+    //   description:
+    //     "• PhD in creative writing\n• Professional editor and writing coach\n• Freelance editor with clients like HarperCollins and Jericho Writers\n• Fabel community contributor, developing AI quality control for author submissions and guiding Fabel's leadership on the publishing market",
+    // },
+    // {
+    //   id: 11,
+    //   name: "Josephine Monger",
+    //   role: "Advisor",
+    //   image: josephineImg,
+    //   description:
+    //     "• Specialist In Customer Centricity And Strategy Development\n• 20+ Years Of Experience In Executive And Leadership Roles In Prominent Australian Businesses\n• Guides Fabel's Strategy To Ensure The Best Customer Experience On The Platform",
+    // },
   ];
 
   // Partners data

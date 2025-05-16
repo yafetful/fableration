@@ -4,6 +4,7 @@ import logoBlack from '@/assets/images/logo_black.svg';
 import menuIcon from '@/assets/icons/menu.svg';
 import arrowIcon from '@/assets/icons/arrow.svg';
 import './MobileMenu.css';
+import { Link } from 'react-router-dom';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -79,11 +80,13 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
       
       <div className={`mobile-menu ${isOpen ? 'active animate-mobile-slide-in-down' : 'animate-mobile-slide-out-up'}`}>
         <div className="mobile-menu-header">
-          <img 
-            src={logoBlack} 
-            alt="Fableration" 
-            className="mobile-menu-logo" 
-          />
+          <Link to="/">
+            <img 
+              src={logoBlack} 
+              alt="Fableration" 
+              className="mobile-menu-logo" 
+            />
+          </Link>
           <button 
             className="mobile-menu-toggle"
             onClick={onClose}
@@ -135,11 +138,11 @@ export function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
           <Button 
             variant="gradient" 
             rounded="full"
-            textTransform="capitalize"
-            href="#join-us"
+            href="https://www.fableration.com/platform/reader"
+            target="_blank"
             className="w-full"
           >
-            be part of story
+            Be Part of the Story
           </Button>
         </div>
       </div>

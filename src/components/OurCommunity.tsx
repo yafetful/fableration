@@ -312,7 +312,7 @@ export const OurCommunity = ({
       subtitle: "Readers",
       title: "Access Without Overload: Cut Through the Fog.",
       content:
-        "Today’s algorithms focus on what makes the most money for their corporate owner, not on the quality of the book or what readers would really like to read. Fableration changes this with a groundbreaking AI discovery function.\n It allows readers to find and consume the knowledge or entertainment they seek, without losing the ease of digital convenience.",
+        "Today’s algorithms focus on what makes the most money for their corporate owner, not on the quality of the book or what readers would really like to read. Fableration changes this with a groundbreaking AI discovery function.\n\n It allows readers to find and consume the knowledge or entertainment they seek, without losing the ease of digital convenience.",
       link: "/ourcommunity/0",
       target: "_self",
     },
@@ -330,7 +330,7 @@ export const OurCommunity = ({
       subtitle: "Publisher",
       title: "Publish Smarter. Lose the Risk, Not the Potential.",
       content:
-        "Traditional publishing is a high-risk, low reward endeavour for publishers, and the profits from the books that do sell in high volumes offset the losses from the rest.\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion.",
+        "Traditional publishing is a high-risk, low reward endeavour for publishers, and the profits from the books that do sell in high volumes offset the losses from the rest.\n\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion.",
       link: "/ourcommunity/2",
       target: "_self",
     },

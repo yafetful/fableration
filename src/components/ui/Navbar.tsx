@@ -88,11 +88,10 @@ export function Navbar({ className }: NavbarProps) {
             <Button 
               variant="gradient" 
               rounded="full"
-              textTransform="capitalize"
               href="https://www.fableration.com/platform/reader"
               target="_blank"
             >
-              be part of story
+              Be Part of the Story
             </Button>
           </div>
         </div>

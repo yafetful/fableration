@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import './Creative.css';
 import bgVideo from '../assets/bg_video.mp4';
 import logo from '../assets/images/logo.svg';
+import arrowDown from '../assets/icons/arrow_down_white.svg';
 import '../styles/animations.css';
 
 interface SlideContent {
@@ -162,6 +163,10 @@ export const Creative = ({ isSectionVisible }: { isSectionVisible: boolean }) =>
               {renderSlideContent(currentSlide, true)}
             </div>
           )}
+        </div>
+        {/* Bottom center down arrow */}
+        <div className="creative-bottom-arrow">
+          <img src={arrowDown} alt="Scroll Down" className="down-arrow-svg" />
         </div>
     </div>
   );

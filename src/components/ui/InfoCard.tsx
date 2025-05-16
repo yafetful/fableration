@@ -36,53 +36,65 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   const isTeam = variant === 'team';
   
   const renderContent = () => {
-    const lines = content.split('\n');
-    const contentElements = lines.map((line, index) => {
-      const trimmedLine = line.trim();
-      if (trimmedLine === '') {
-        return null;
-      }
-      const emailMatch = trimmedLine.match(/\[info@fableration.com\]/);
-      let lineNode: React.ReactNode = trimmedLine;
-      if (emailMatch) {
-        lineNode = (
-          <>
-            {trimmedLine.split(/\[info@fableration.com\]/).map((part, i, arr) => (
-              <React.Fragment key={i}>
-                {part}
-                {i < arr.length - 1 && (
-                  <span 
-                    className="email-link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      window.location.href = 'mailto:info@fableration.com';
-                    }}
-                    style={{ 
-                      color: '#0038FF', 
-                      textDecoration: 'underline',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    info@fableration.com
-                  </span>
-                )}
-              </React.Fragment>
-            ))}
-          </>
+    // Split by double newlines for paragraphs
+    const paragraphs = content.split(/\n\n+/);
+    const contentElements: React.ReactNode[] = [];
+    paragraphs.forEach((para, pIdx) => {
+      // Split each paragraph by single newline for line breaks
+      const lines = para.split(/\n/);
+      lines.forEach((line, lIdx) => {
+        const trimmedLine = line.trim();
+        if (trimmedLine === '') return;
+        const emailMatch = trimmedLine.match(/\[info@fableration.com\]/);
+        let lineNode: React.ReactNode = trimmedLine;
+        if (emailMatch) {
+          lineNode = (
+            <>
+              {trimmedLine.split(/\[info@fableration.com\]/).map((part, i, arr) => (
+                <React.Fragment key={i}>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <span 
+                      className="email-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.location.href = 'mailto:info@fableration.com';
+                      }}
+                      style={{ 
+                        color: '#0038FF', 
+                        textDecoration: 'underline',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      info@fableration.com
+                    </span>
+                  )}
+                </React.Fragment>
+              ))}
+            </>
+          );
+        }
+        if (isTeam && trimmedLine.startsWith('•')) {
+          const itemText = trimmedLine.substring(1).trim();
+          contentElements.push(
+            <div key={`p${pIdx}-l${lIdx}`} className="list-item">
+              {itemText}
+            </div>
+          );
+        } else {
+          contentElements.push(
+            <p key={`p${pIdx}-l${lIdx}`} className="info-card-text">{lineNode}</p>
+          );
+        }
+      });
+      // Insert extra space between paragraphs (except after last)
+      if (pIdx < paragraphs.length - 1) {
+        contentElements.push(
+          <div key={`space-${pIdx}`} style={{ height: '1em' }} />
         );
       }
-      if (isTeam && trimmedLine.startsWith('•')) {
-        const itemText = trimmedLine.substring(1).trim();
-        return (
-          <div key={index} className="list-item">
-            {itemText}
-          </div>
-        );
-      } else {
-        return <p key={index} className="info-card-text">{lineNode}</p>;
-      }
-    }).filter(Boolean);
+    });
     return <>{contentElements}</>;
   };
   

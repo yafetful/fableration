@@ -72,8 +72,8 @@ const About: React.FC = () => {
             <span className="highlight">What</span> is Fableration?
           </h2>
           <h3>
-            Fableration Is A Storytelling And Knowledge-Sharing Community Where
-            Everyone Benefits.
+            Fableration is a storytelling and knowledge-sharing community where
+            everyone benefits.
           </h3>
           <p>
             It is a not-for-profit, open-source platform that combines AI-driven
