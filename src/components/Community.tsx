@@ -113,13 +113,7 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
               width="100%" 
               onClick={() => {
                 if (event.externalLink) {
-                  const a = document.createElement('a');
-                  a.href = event.externalLink;
-                  a.target = '_blank';
-                  a.rel = 'noopener noreferrer';
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
+                  window.location.href = event.externalLink;
                 }
               }}
             >
