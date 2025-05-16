@@ -112,30 +112,35 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
                 </div>
               ))}
             </div>
-            <Button 
-              variant="slide" 
-              showArrow={true} 
-              rounded="full"
-              width="100%" 
-              onClick={() => {
-                if (event.externalLink) {
-                  if (isMobileDevice()) {
-                    // 移动设备：先尝试打开新窗口，失败则在当前窗口打开
-                    const newWindow = window.open(event.externalLink, '_blank');
-                    
-                    // 如果window.open被阻止或返回null，则使用location.href
-                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                      window.location.href = event.externalLink;
-                    }
-                  } else {
-                    // PC端：直接打开新窗口
+            {/* 根据设备类型使用不同样式的按钮 */}
+            {isMobileDevice() ? (
+              <Button 
+                variant="gradient" 
+                rounded="full"
+                width="100%" 
+                onClick={() => {
+                  if (event.externalLink) {
                     window.open(event.externalLink, '_blank');
                   }
-                }
-              }}
-            >
-              Hurry Up And Participate
-            </Button>
+                }}
+              >
+                Hurry Up And Participate
+              </Button>
+            ) : (
+              <Button 
+                variant="slide" 
+                showArrow={true} 
+                rounded="full"
+                width="100%" 
+                onClick={() => {
+                  if (event.externalLink) {
+                    window.open(event.externalLink, '_blank');
+                  }
+                }}
+              >
+                Hurry Up And Participate
+              </Button>
+            )}
           </div>
         </div>
       </div>
