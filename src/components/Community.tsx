@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Community.css';
 import { Button } from './ui/Button';
 import api from '../api';
