@@ -57,9 +57,9 @@ const Footer: React.FC = () => {
             </Link>
             <nav className="footer__nav">
               <Link to="/about">About Us</Link>
-              <a href="/ourcommunity">Our Community</a>
-              <a href="/feature">Product Features</a>
-              <a href="/community">Community</a>
+              <Link to="/ourcommunity">Our Community</Link>
+              <Link to="/feature">Product Features</Link>
+              <Link to="/news">News</Link>
             </nav>
           </div>
         </div>

@@ -48,7 +48,7 @@ export function Navbar({ className }: NavbarProps) {
     },
     { label: "Our Community", href: "/ourcommunity" },
     { label: "Product Features", href: "/feature" },
-    { label: "Community", href: "/community" }
+    { label: "News", href: "/news" }
   ];
   
   return (
@@ -82,7 +82,7 @@ export function Navbar({ className }: NavbarProps) {
             </TextButton>
             <TextButton width={160} href="/ourcommunity">Our Community</TextButton>
             <TextButton width={170} href="/feature">Product Features</TextButton>
-            <TextButton width={120} href="/community">Community</TextButton>
+            <TextButton width={120} href="/news">News</TextButton>
           </nav>
           <div className="ml-8">
             <Button 

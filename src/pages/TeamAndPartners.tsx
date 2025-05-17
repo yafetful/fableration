@@ -19,15 +19,15 @@ import arianImg from "../assets/images/team/Arian_Sohi.png";
 // import josephineImg from "../assets/images/team/Josephine_Monger.png";
 
 // Partner images
-import partner1Img from "../assets/images/Partners/1.png";
-import partner2Img from "../assets/images/Partners/2.png";
-import partner3Img from "../assets/images/Partners/3.png";
-import partner4Img from "../assets/images/Partners/4.png";
-import partner5Img from "../assets/images/Partners/5.png";
-import partner6Img from "../assets/images/Partners/6.png";
-import partner7Img from "../assets/images/Partners/7.png";
-import partner8Img from "../assets/images/Partners/8.png";
-import partner9Img from "../assets/images/Partners/9.png";
+// import partner1Img from "../assets/images/Partners/1.png";
+// import partner2Img from "../assets/images/Partners/2.png";
+// import partner3Img from "../assets/images/Partners/3.png";
+// import partner4Img from "../assets/images/Partners/4.png";
+// import partner5Img from "../assets/images/Partners/5.png";
+// import partner6Img from "../assets/images/Partners/6.png";
+// import partner7Img from "../assets/images/Partners/7.png";
+// import partner8Img from "../assets/images/Partners/8.png";
+// import partner9Img from "../assets/images/Partners/9.png";
 
 const TeamAndPartners: React.FC = () => {
   // Create references for each section
@@ -193,25 +193,25 @@ const TeamAndPartners: React.FC = () => {
   ];
 
   // Partners data
-  const partners = [
-    { id: 1, image: partner1Img, link: "https://www.influxpress.com/" },
-    { id: 2, image: partner2Img, link: "https://www.leschenaultpress.com/" },
-    { id: 3, image: partner3Img, link: "https://bluemoosebooks.com/" },
-    { id: 4, image: partner4Img, link: "https://renardpress.com/" },
-    { id: 5, image: partner5Img, link: "https://www.cloudtechgroup.com/" },
-    { id: 6, image: partner6Img, link: "https://www.writingwa.org/" },
-    { id: 7, image: partner7Img, link: "https://invisiblepublishing.com/" },
-    { id: 8, image: partner8Img, link: "https://www.cipherpress.co.uk/" },
-    { id: 9, image: partner9Img, link: "https://deadinkbooks.com/" },
-  ];
+  // const partners = [
+  //   { id: 1, image: partner1Img, link: "https://www.influxpress.com/" },
+  //   { id: 2, image: partner2Img, link: "https://www.leschenaultpress.com/" },
+  //   { id: 3, image: partner3Img, link: "https://bluemoosebooks.com/" },
+  //   { id: 4, image: partner4Img, link: "https://renardpress.com/" },
+  //   { id: 5, image: partner5Img, link: "https://www.cloudtechgroup.com/" },
+  //   { id: 6, image: partner6Img, link: "https://www.writingwa.org/" },
+  //   { id: 7, image: partner7Img, link: "https://invisiblepublishing.com/" },
+  //   { id: 8, image: partner8Img, link: "https://www.cipherpress.co.uk/" },
+  //   { id: 9, image: partner9Img, link: "https://deadinkbooks.com/" },
+  // ];
   
   // Initialize references array
   useEffect(() => {
     // Create new references array, length matches data array
     featuredCardRefs.current = Array(featuredTeamMembers.length).fill(null);
     regularCardRefs.current = Array(regularTeamMembers.length).fill(null);
-    partnerCardRefs.current = Array(partners.length).fill(null);
-  }, [featuredTeamMembers.length, regularTeamMembers.length, partners.length]);
+    // partnerCardRefs.current = Array(partners.length).fill(null);
+  }, [featuredTeamMembers.length, regularTeamMembers.length]);
 
   // Calculate animation delay
   const getAnimationDelay = (index: number, baseDelay: number = 0) => {
@@ -221,38 +221,38 @@ const TeamAndPartners: React.FC = () => {
   };
 
   // Control marquee logic
-  useEffect(() => {
-    // Only run on client
-    if (typeof window === 'undefined') return;
+  // useEffect(() => {
+  //   // Only run on client
+  //   if (typeof window === 'undefined') return;
     
-    // Get marquee element
-    const marqueeContent = document.querySelector('.partners-marquee-content') as HTMLElement | null;
-    if (!marqueeContent) return;
+  //   // Get marquee element
+  //   const marqueeContent = document.querySelector('.partners-marquee-content') as HTMLElement | null;
+  //   if (!marqueeContent) return;
     
-    // Adjust animation speed - adjust based on partner count
-    const itemCount = partners.length;
-    const animationDuration = Math.max(15, itemCount * 3); // Minimum 15 seconds, each partner 3 seconds
+  //   // Adjust animation speed - adjust based on partner count
+  //   const itemCount = partners.length;
+  //   const animationDuration = Math.max(15, itemCount * 3); // Minimum 15 seconds, each partner 3 seconds
     
-    marqueeContent.style.animationDuration = `${animationDuration}s`;
+  //   marqueeContent.style.animationDuration = `${animationDuration}s`;
     
-    // Adjust when window size changes
-    const handleResize = () => {
-      // If less than 1024px, don't handle marquee
-      if (window.innerWidth < 1024) return;
+  //   // Adjust when window size changes
+  //   const handleResize = () => {
+  //     // If less than 1024px, don't handle marquee
+  //     if (window.innerWidth < 1024) return;
       
-      const marqueeContainer = document.querySelector('.partners-marquee-container');
-      if (marqueeContainer) {
-        marqueeContainer.classList.add('partners-marquee-visible');
-      }
-    };
+  //     const marqueeContainer = document.querySelector('.partners-marquee-container');
+  //     if (marqueeContainer) {
+  //       marqueeContainer.classList.add('partners-marquee-visible');
+  //     }
+  //   };
     
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initial call
+  //   window.addEventListener('resize', handleResize);
+  //   handleResize(); // Initial call
     
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [partners.length]);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [partners.length]);
 
   return (
     <div className="team-container">
@@ -336,7 +336,7 @@ const TeamAndPartners: React.FC = () => {
         </div>
       </div>
 
-      <div className="partners-section">
+      {/* <div className="partners-section">
         <div
           ref={partnersTitleRef}
           className="section-title opacity-0"
@@ -345,7 +345,6 @@ const TeamAndPartners: React.FC = () => {
           <h2>Partners</h2>
         </div>
 
-        {/* PC marquee effect */}
         <div className="partners-marquee-container">
           <div className="partners-marquee">
             <div className="partners-marquee-content">
@@ -362,7 +361,6 @@ const TeamAndPartners: React.FC = () => {
                   </div>
                 </a>
               ))}
-              {/* Repeat content to create infinite scroll */}
               {partners.map((partner) => (
                 <a 
                   key={`marquee-2-${partner.id}`}
@@ -380,7 +378,6 @@ const TeamAndPartners: React.FC = () => {
           </div>
         </div>
         
-        {/* Mobile grid layout */}
         <div
           ref={partnersGridRef}
           className="partners-grid-mobile"
@@ -408,7 +405,7 @@ const TeamAndPartners: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </div>

@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/feature/:id" element={<FeatureDetail />} />
           <Route path="/ourcommunity" element={<OurCommunity />} />
           <Route path="/ourcommunity/:id" element={<OurCommunityDetail />} />
-          <Route path="/community" element={<CCommunity />} />
+          <Route path="/news" element={<CCommunity />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/admin/blogs" element={<ProtectedRoute><BlogListPage /></ProtectedRoute>} />

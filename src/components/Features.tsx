@@ -41,7 +41,7 @@ export const Features: React.FC = () => {
       id: 3,
       title: "Every Great Read Begins With Discovery.",
       content:
-        "Our game-changing AI search function promotes organic discovery and shines a light on work that would otherwise be condemned to darkness",
+        "Our game-changing AI search function promotes organic discovery and shines a light on work that would otherwise be condemned to darkness.",
       image: discoveryImage,
       variant: "modern" as const,
       link: "/feature/2",

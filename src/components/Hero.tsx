@@ -102,7 +102,6 @@ export const Hero = () => {
                     <p className={`hero-title ${elementsVisible ? 'animate-slide-left delay-200' : 'opacity-0'}`}>Worlds</p>
                   </div>
                 )}
-                <p className={`hero-subtitle ${elementsVisible ? 'animate-fade-in delay-400' : 'opacity-0'}`}>The Publishing Renaissance Starts Here</p>
               </div>
               
               <div className="hero-footer">
@@ -125,7 +124,7 @@ export const Hero = () => {
                     />
                   </div>
                 </div>
-                <p className={`hero-community-text ${elementsVisible ? 'animate-fade-in delay-800' : 'opacity-0'}`}>Join A Like Minded Community</p>
+                <p className={`hero-community-text ${elementsVisible ? 'animate-fade-in delay-800' : 'opacity-0'}`}>Join Our Community</p>
               </div>
             </div>
           </div>

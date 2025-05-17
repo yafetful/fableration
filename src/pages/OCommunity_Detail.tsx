@@ -48,10 +48,10 @@ const CommunityDetail: React.FC = () => {
     },
     {
       image: publishersCardImage,
-      subtitle: "Publisher",
+      subtitle: "Publishers",
       title: "Publish Smarter. Lose the Risk, Not the Potential.",
       content:
-        "Traditional publishing is a high-risk, low reward endeavour for publishers and the profits from the books that do sell in high volumes offset the losses from the rest.\n\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion. This reduces the risk and encourages publishers to take a chance on manuscripts from emerging writers.\n\n We want to work with publishers to help transform the industry. So if you’re a publisher and would like to know more about Fableration, contact us [info@fableration.com] today.",
+        "Traditional publishing is a high-risk, low reward endeavour for publishers and the profits from the books that do sell in high volumes offset the losses from the rest.\n\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion. This reduces the risk and encourages publishers to take a chance on manuscripts from emerging writers.\n\n We want to work with publishers to help transform the industry. So, if you’re a publisher and would like to know more about Fableration, contact us at [info@fableration.com] today.",
       link: "/ourcommunity/2",
       target: "_self",
     },

@@ -32,11 +32,7 @@ export const Creative = ({ isSectionVisible }: { isSectionVisible: boolean }) =>
       text: "Readers 'discover' what someone has paid to place in front of their nose."
     },
     {
-      logo: true
-    },
-    {
-      logoWithText: true,
-      text: "the publishing industry\n FOREVER."
+      text: "Fableration will change\n the publishing industry forever."
     }
   ];
 

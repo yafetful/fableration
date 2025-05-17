@@ -327,7 +327,7 @@ export const OurCommunity = ({
     },
     {
       image: publishersCardImage,
-      subtitle: "Publisher",
+      subtitle: "Publishers",
       title: "Publish Smarter. Lose the Risk, Not the Potential.",
       content:
         "Traditional publishing is a high-risk, low reward endeavour for publishers, and the profits from the books that do sell in high volumes offset the losses from the rest.\n\n Fableration is a new model that encourages publishers to bring a book to market quickly and test the audience, without investing in promotion.",
