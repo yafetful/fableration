@@ -28,7 +28,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 // API基础URL
-const API_URL = '/api';
+const API_URL = '/fab-api';
 
 // Create authentication provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

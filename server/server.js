@@ -28,16 +28,16 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/blogs', blogRoutes);
-app.use('/api/announcements', announcementRoutes);
-app.use('/api/events', eventRoutes);
-app.use('/api/highlights', highlightRoutes);
-app.use('/api/upload', uploadRoutes);
+app.use('/fab-api/auth', authRoutes);
+app.use('/fab-api/blogs', blogRoutes);
+app.use('/fab-api/announcements', announcementRoutes);
+app.use('/fab-api/events', eventRoutes);
+app.use('/fab-api/highlights', highlightRoutes);
+app.use('/fab-api/upload', uploadRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
-  res.send('Fableration API Server');
+  res.send('Fableration fab-api Server');
 });
 
 // Start server

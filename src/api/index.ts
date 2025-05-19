@@ -1,5 +1,5 @@
 // API Interface
-const API_URL = '/api';
+const API_URL = '/fab-api';
 
 interface User {
   id: number;

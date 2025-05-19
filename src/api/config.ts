@@ -1,5 +1,5 @@
 // API configuration
-const API_URL = '/api';
+const API_URL = '/fab-api';
 
 // Helper functions for API requests
 export const api = {

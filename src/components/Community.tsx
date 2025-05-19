@@ -128,8 +128,7 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
               </Button>
             ) : (
               <Button 
-                variant="slide" 
-                showArrow={true} 
+                variant="gradient" 
                 rounded="full"
                 width="100%" 
                 onClick={() => {

@@ -197,7 +197,7 @@ export const Features: React.FC = () => {
           style={{ transform: "translateZ(0)"}}
         >
           <Button
-            variant="slide"
+            variant="gradient"
             rounded="full"
             showArrow
             width={320}
