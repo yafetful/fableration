@@ -150,9 +150,8 @@ const Features: React.FC = () => {
           <span className="feature-button-small-title">Read our Whitepaper</span>
         </h1>
       <Button
-            variant="slide"
+            variant="gradient"
             rounded="full"
-            showArrow
             width={400}
             onClick={() => {
               alert("Triggered!");
