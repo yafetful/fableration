@@ -100,7 +100,7 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
           </div>
           <div className="card-details">
             <h3 className="card-title">{event.title}</h3>
-            <p className="card-description">{event.summary}</p>
+            <p className="card-description">{event.content}</p>
             <div className="card-info">
               {event.items && event.items.map((item, index) => (
                 <div key={index} className="info-item">
@@ -124,7 +124,7 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
                   }
                 }}
               >
-                Hurry Up And Participate
+                {event.summary}
               </Button>
             ) : (
               <Button 
@@ -137,7 +137,7 @@ export const Community: React.FC<CommunityProps> = ({ isSectionVisible = false }
                   }
                 }}
               >
-                Hurry Up And Participate
+                {event.summary}
               </Button>
             )}
           </div>

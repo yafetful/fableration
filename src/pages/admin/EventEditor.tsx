@@ -545,7 +545,7 @@ const EventEditor: React.FC = () => {
                     
                     {/* Summary input */}
                     <div className="form-group">
-                      <label htmlFor="summary" className="form-label required">Summary</label>
+                      <label htmlFor="summary" className="form-label required">Button Content</label>
                       <textarea
                         id="summary"
                         name="summary"
