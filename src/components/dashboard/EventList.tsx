@@ -216,7 +216,7 @@ const EventList: React.FC = () => {
                         </span>
                         <div className="flex mt-2 space-x-2">
                           <Link
-                            to={`/admin/events/edit/${event.id}`}
+                            to={`/admin/events/${event.id}`}
                             className="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-md hover:bg-blue-200"
                           >
                             Edit
