@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import arrowIcon from "@/assets/icons/arrow.svg"
+import arrowIconWhite from "@/assets/icons/arrow_white.svg"
 import { Dropdown } from "./Dropdown"
 import type { DropdownItem } from "./Dropdown"
 
@@ -13,6 +14,7 @@ export interface TextButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   href?: string;
   target?: string;
   to?: string;
+  arrowColor?: 'white' | 'black';
 }
 
 const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
@@ -25,6 +27,7 @@ const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
     target = "_self", 
     to,
     children, 
+    arrowColor = 'black',
     ...props 
   }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +74,6 @@ const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
             fontFamily: "var(--font-family)",
             width: width ? width : undefined,
             minWidth: width ? width : undefined,
-            color: "#010821"
           }}
           ref={ref}
           onClick={handleClick}
@@ -80,15 +82,12 @@ const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
           {children}
           {hasSubmenu && (
             <img 
-              src={arrowIcon} 
+              src={arrowColor === 'white' ? arrowIconWhite : arrowIcon} 
               alt="dropdown arrow" 
               className={cn(
                 "ml-1 w-2.5 h-auto transition-transform duration-200",
                 isOpen && "transform rotate-180"
               )}
-              style={{
-                color: "#010821"
-              }}
             />
           )}
         </button>

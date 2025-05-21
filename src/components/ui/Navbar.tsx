@@ -8,6 +8,7 @@ import { Button } from "./Button"
 import { MobileMenu } from "./MobileMenu"
 import type { DropdownItem } from "./Dropdown"
 import logoSvg from "@/assets/images/logo_black.svg"
+import logoSvgWhite from "@/assets/images/logo.svg"
 import menuIcon from "@/assets/icons/menu.svg"
 import styles from "./Navbar.module.css"
 
@@ -18,6 +19,10 @@ interface NavbarProps {
 export function Navbar({ className }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showGlassBg, setShowGlassBg] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [atTop, setAtTop] = useState(true);
   
   useEffect(() => {
     const checkScreenSize = () => {
@@ -32,6 +37,35 @@ export function Navbar({ className }: NavbarProps) {
     
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          setAtTop(currentScrollY <= 10);
+          if (currentScrollY > lastScrollY && currentScrollY > 10) {
+            // Scrolling down
+            setNavbarVisible(false);
+            setShowGlassBg(false);
+          } else if (currentScrollY < lastScrollY && currentScrollY > 10) {
+            // Scrolling up
+            setNavbarVisible(true);
+            setShowGlassBg(true);
+          } else if (currentScrollY <= 10) {
+            setNavbarVisible(true);
+            setShowGlassBg(false);
+          }
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
   
   const aboutDropdownItems: DropdownItem[] = [
     { label: "About Fableration", href: "/about" },
@@ -54,8 +88,11 @@ export function Navbar({ className }: NavbarProps) {
   return (
     <header 
       className={cn(
-        "w-full py-4 px-6 fixed top-0 z-50 bg-transparent",
-        styles["navbar-glass-bg"],
+        "w-full py-4 px-6 fixed top-0 z-50 transition-all duration-300",
+        !navbarVisible && "-translate-y-full opacity-0 pointer-events-none",
+        showGlassBg && styles["navbar-glass-bg"],
+        !showGlassBg && atTop && "bg-transparent",
+        showGlassBg && "bg-black bg-opacity-80",
         className
       )}
     >
@@ -63,9 +100,9 @@ export function Navbar({ className }: NavbarProps) {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img 
-            src={logoSvg} 
+            src={atTop ? logoSvgWhite : logoSvg}
             alt="Fableration" 
-            className={`h-8 md:h-10 w-auto object-contain ${isMenuOpen ? 'logo-dark' : ''}`}
+            className="h-8 md:h-10 w-auto object-contain transition-all duration-300"
             style={{ height: isMobile ? '30px' : '' }}
           />
         </Link>
@@ -77,16 +114,18 @@ export function Navbar({ className }: NavbarProps) {
               hasSubmenu 
               dropdownItems={aboutDropdownItems}
               width={140}
+              className={atTop ? "text-white" : "text-black"}
+              arrowColor={atTop ? "white" : "black"}
             >
               About Us
             </TextButton>
-            <TextButton width={160} href="/ourcommunity">Our Community</TextButton>
-            <TextButton width={170} href="/feature">Product Features</TextButton>
-            <TextButton width={120} href="/news">News</TextButton>
+            <TextButton width={160} href="/ourcommunity" className={atTop ? "text-white" : "text-black"}>Our Community</TextButton>
+            <TextButton width={170} href="/feature" className={atTop ? "text-white" : "text-black"}>Product Features</TextButton>
+            <TextButton width={120} href="/news" className={atTop ? "text-white" : "text-black"}>News</TextButton>
           </nav>
           <div className="ml-8">
             <Button 
-              variant="gradient" 
+              variant="gradient"
               rounded="full"
               href="https://www.fableration.com/platform/reader"
               target="_blank"
@@ -101,7 +140,7 @@ export function Navbar({ className }: NavbarProps) {
           className="md:hidden focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <img src={menuIcon} alt="Menu" className="w-6 h-6" />
+          <img src={menuIcon} alt="Menu" className={cn("w-6 h-6", atTop ? "" : "filter invert brightness-200")}/>
         </button>
       </div>
       

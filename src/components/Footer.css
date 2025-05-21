@@ -75,7 +75,7 @@
   font-weight: 400;
   transition: color 0.2s, font-weight 0.1s;
   display: inline-block;
-  width: 160px;
+  width: auto;
   text-align: right;
 }
 
