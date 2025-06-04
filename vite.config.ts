@@ -12,6 +12,8 @@ export default defineConfig({
     },
   },
   server: {
+    host: true,
+    allowedHosts: true,
     proxy: {
       '/fab-api': {
         target: 'http://localhost:3001', // 你的后端端口

@@ -125,7 +125,7 @@ const BlogDetail: React.FC = () => {
                   <div className={styles.authorDetails}>
                     <h3>Written by {blog.authorName}</h3>
                     <div className={styles.authorTitle}>
-                      {blog.authorBio || 'Content Creator at Fableration'}image.png
+                      {blog.authorBio || 'Content Creator at Fableration'}
                     </div>
                   </div>
                 </div>
