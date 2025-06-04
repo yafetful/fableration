@@ -196,6 +196,14 @@ const BlogList: React.FC = () => {
                           >
                             Edit
                           </Link>
+                          {blog.slug && blog.published && (
+                            <Link
+                              to={`/blog/${blog.slug}`}
+                              className="px-3 py-1 text-xs font-medium text-purple-700 bg-purple-100 rounded-md hover:bg-purple-200"
+                            >
+                              View
+                            </Link>
+                          )}
                           <button
                             onClick={() => handleTogglePublish(blog.id!)}
                             className={`px-3 py-1 text-xs font-medium rounded-md ${

@@ -24,6 +24,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute.tsx'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import './index.css'
 import './styles/dashboard.css'
+import BlogDetail from './pages/BlogDetail.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -53,6 +54,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/admin/highlights/new" element={<ProtectedRoute><HighlightEditor /></ProtectedRoute>} />
           <Route path="/admin/highlights/:id" element={<ProtectedRoute><HighlightEditor /></ProtectedRoute>} />
           <Route path="/admin/password" element={<ProtectedRoute><PasswordChange /></ProtectedRoute>} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -197,9 +197,9 @@ const CCommunity: React.FC = () => {
             filteredBlogs.map((blog) => (
               <CompetitionCard
                 key={blog.id}
-                title={blog.title}
-                description={blog.summary}
-                link={blog.externalLink || `/blog/${blog.id}`}
+                title={blog.title || ''}
+                description={blog.summary || ''}
+                link={blog.externalLink || (blog.slug ? `/blog/${blog.slug}` : '')}
                 imageUrl={blog.imageUrl}
                 isVisible={competitionsVisible}
               />

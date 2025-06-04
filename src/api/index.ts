@@ -9,13 +9,45 @@ interface User {
 
 interface Blog {
   id?: number;
-  title: string;
+  title?: string;
+  slug?: string;
   content?: string;
-  summary: string;
-  category: string;
+  summary?: string;
+  category?: string;
   imageUrl?: string;
+  coverImage?: string;
   externalLink?: string;
-  published: boolean;
+  logoId?: number;
+  authorId?: number;
+  referenceArticles?: string;
+  published?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  tags?: number[];
+}
+
+interface Logo {
+  id?: number;
+  name: string;
+  logoUrl?: string;
+  date?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface Author {
+  id?: number;
+  name: string;
+  avatarUrl?: string;
+  bio?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface Tag {
+  id?: number;
+  name: string;
+  color?: string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -132,6 +164,171 @@ const api = {
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message || 'Failed to delete blog');
+      }
+    }
+  },
+  
+  // Logos API
+  logos: {
+    // Get all logos
+    getAll: async (): Promise<Logo[]> => {
+      const response = await fetch(`${API_URL}/blogs/logos/all`);
+      if (!response.ok) throw new Error('Failed to fetch logos');
+      return response.json();
+    },
+    
+    // Create a logo
+    create: async (logo: Logo): Promise<Logo> => {
+      const response = await fetch(`${API_URL}/blogs/logos`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify(logo)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create logo');
+      }
+      
+      return response.json();
+    },
+    
+    // Update a logo
+    update: async (id: string | number, logo: Logo): Promise<Logo> => {
+      const response = await fetch(`${API_URL}/blogs/logos/${id}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify(logo)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update logo');
+      }
+      
+      return response.json();
+    },
+    
+    // Delete a logo
+    delete: async (id: string | number): Promise<void> => {
+      const response = await fetch(`${API_URL}/blogs/logos/${id}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to delete logo');
+      }
+    }
+  },
+  
+  // Authors API
+  authors: {
+    // Get all authors
+    getAll: async (): Promise<Author[]> => {
+      const response = await fetch(`${API_URL}/blogs/authors/all`);
+      if (!response.ok) throw new Error('Failed to fetch authors');
+      return response.json();
+    },
+    
+    // Create an author
+    create: async (author: Author): Promise<Author> => {
+      const response = await fetch(`${API_URL}/blogs/authors`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify(author)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create author');
+      }
+      
+      return response.json();
+    },
+    
+    // Update an author
+    update: async (id: string | number, author: Author): Promise<Author> => {
+      const response = await fetch(`${API_URL}/blogs/authors/${id}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify(author)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update author');
+      }
+      
+      return response.json();
+    },
+    
+    // Delete an author
+    delete: async (id: string | number): Promise<void> => {
+      const response = await fetch(`${API_URL}/blogs/authors/${id}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to delete author');
+      }
+    }
+  },
+  
+  // Tags API
+  tags: {
+    // Get all tags
+    getAll: async (): Promise<Tag[]> => {
+      const response = await fetch(`${API_URL}/blogs/tags/all`);
+      if (!response.ok) throw new Error('Failed to fetch tags');
+      return response.json();
+    },
+    
+    // Create a tag
+    create: async (tag: Tag): Promise<Tag> => {
+      const response = await fetch(`${API_URL}/blogs/tags`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify(tag)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create tag');
+      }
+      
+      return response.json();
+    },
+    
+    // Update a tag
+    update: async (id: string | number, tag: Tag): Promise<Tag> => {
+      const response = await fetch(`${API_URL}/blogs/tags/${id}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify(tag)
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update tag');
+      }
+      
+      return response.json();
+    },
+    
+    // Delete a tag
+    delete: async (id: string | number): Promise<void> => {
+      const response = await fetch(`${API_URL}/blogs/tags/${id}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to delete tag');
       }
     }
   },
@@ -474,5 +671,5 @@ const api = {
   }
 };
 
-export type { Blog, Announcement, Highlight, Event, EventItem, User };
+export type { Blog, Logo, Author, Tag, Announcement, Highlight, Event, EventItem, User };
 export default api; 

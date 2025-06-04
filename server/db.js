@@ -99,19 +99,81 @@ const initializeDb = async () => {
       )
     `);
 
+    // Logos table
+    await exec(`
+      CREATE TABLE IF NOT EXISTS logos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        logoUrl TEXT,
+        date TEXT,
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // Authors table
+    await exec(`
+      CREATE TABLE IF NOT EXISTS authors (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        avatarUrl TEXT,
+        bio TEXT,
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // Tags table
+    await exec(`
+      CREATE TABLE IF NOT EXISTS tags (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT UNIQUE NOT NULL,
+        color TEXT DEFAULT '#3B82F6',
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
     // Blogs table
     await exec(`
       CREATE TABLE IF NOT EXISTS blogs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
+        title TEXT,
+        slug TEXT,
         content TEXT,
-        summary TEXT NOT NULL,
-        category TEXT NOT NULL DEFAULT 'Blogs',
+        summary TEXT,
+        category TEXT DEFAULT 'Blogs',
         imageUrl TEXT,
+        coverImage TEXT,
         externalLink TEXT,
-        createdAt TEXT NOT NULL,
-        updatedAt TEXT NOT NULL,
-        published INTEGER NOT NULL DEFAULT 0
+        logoId INTEGER,
+        authorId INTEGER,
+        referenceArticles TEXT,
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        published INTEGER NOT NULL DEFAULT 0,
+        FOREIGN KEY (logoId) REFERENCES logos (id) ON DELETE SET NULL,
+        FOREIGN KEY (authorId) REFERENCES authors (id) ON DELETE SET NULL
+      )
+    `);
+    // Attempt to create unique index on slug immediately after table creation if blogs table is new
+    // This might fail if blogs table existed and then was altered (slugs might not be unique yet)
+    // The migration script will handle robust slug unique index creation.
+    try {
+      await exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_blogs_slug ON blogs(slug)');
+    } catch (error) {
+        console.log('Note: Could not create unique index on slug during initial table setup. Migration script will handle this.');
+    }
+
+    // Blog tags junction table
+    await exec(`
+      CREATE TABLE IF NOT EXISTS blog_tags (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        blogId INTEGER NOT NULL,
+        tagId INTEGER NOT NULL,
+        FOREIGN KEY (blogId) REFERENCES blogs (id) ON DELETE CASCADE,
+        FOREIGN KEY (tagId) REFERENCES tags (id) ON DELETE CASCADE,
+        UNIQUE(blogId, tagId)
       )
     `);
 
@@ -123,7 +185,7 @@ const initializeDb = async () => {
         message TEXT NOT NULL,
         url TEXT,
         active INTEGER NOT NULL DEFAULT 0,
-        createdAt TEXT NOT NULL,
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
         expiresAt TEXT
       )
     `);
@@ -138,8 +200,8 @@ const initializeDb = async () => {
         content TEXT,
         externalLink TEXT,
         published INTEGER NOT NULL DEFAULT 0,
-        createdAt TEXT NOT NULL,
-        updatedAt TEXT NOT NULL
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
     `);
 
@@ -152,8 +214,8 @@ const initializeDb = async () => {
         url TEXT,
         type TEXT NOT NULL DEFAULT 'image',
         active INTEGER NOT NULL DEFAULT 0,
-        createdAt TEXT NOT NULL,
-        updatedAt TEXT NOT NULL
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
     `);
 
@@ -170,11 +232,10 @@ const initializeDb = async () => {
       )
     `);
 
-    // 检查管理员用户是否存在
+    // Ensure admin user exists
     const adminUser = await get('SELECT * FROM users WHERE email = ?', ['admin@fableration.com']);
-    
     if (!adminUser) {
-      const hashedPassword = bcrypt.hashSync('123', 10); // 默认密码是 '123'
+      const hashedPassword = bcrypt.hashSync('123', 10); 
       await run(
         'INSERT INTO users (email, password, role, createdAt) VALUES (?, ?, ?, ?)',
         ['admin@fableration.com', hashedPassword, 'admin', new Date().toISOString()]
@@ -182,13 +243,17 @@ const initializeDb = async () => {
       console.log('Admin user created with email: admin@fableration.com and password: 123');
     }
 
-    console.log('Database initialized successfully');
+    console.log('Database initial schema (CREATE TABLE IF NOT EXISTS) checked/applied successfully.');
   } catch (error) {
-    console.error('Database initialization error:', error);
+    console.error('Database initial schema (CREATE TABLE IF NOT EXISTS) check/apply error:', error);
+    // Critical error during initial schema setup, might be best to exit
+    // process.exit(1);
   }
 };
 
-// 初始化数据库
+// Call initializeDb when the module is loaded.
+// The main application should ideally wait for this to complete if it depends on the db being ready.
 initializeDb();
 
 export default db; 
+

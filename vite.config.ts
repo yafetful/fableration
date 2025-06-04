@@ -11,4 +11,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/fab-api': {
+        target: 'http://localhost:3001', // 你的后端端口
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/fab-api/, '/fab-api'),
+      },
+    },
+  },
 })

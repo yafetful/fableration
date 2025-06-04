@@ -1,0 +1,418 @@
+.blogDetailContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #D7E6FF;
+}
+
+.blogDetailHeader {
+  width: 100%;
+  height: 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.blogDetailHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.blogDetailHeader > * {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 2rem;
+}
+
+.blogDetailHeaderTitle {
+  font-size: 64px;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  text-align: left;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.blogDetailMain {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem 4rem 1rem;
+}
+
+.blogDetailCard {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.blogDetailContent {
+  padding: 3rem;
+}
+
+.blogDetailProse {
+  max-width: none;
+  line-height: 1.2;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.blogDetailProse h1,
+.blogDetailProse h2,
+.blogDetailProse h3,
+.blogDetailProse h4 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.blogDetailProse h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.blogDetailProse h3 {
+  font-size: 1.5rem;
+}
+
+.blogDetailProse img {
+  border-radius: 8px;
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.authorSection {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid #BCCDD6;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.authorAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none;
+}
+
+.authorDetails h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1a202c;
+}
+
+.authorTitle {
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.referenceArticles {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.referenceArticles h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #1a202c;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.articleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.referenceCard {
+  border-radius: 16px;
+  background: linear-gradient(90deg,#ffffff71 0%, #849fff63 100% );
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.referenceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.referenceImage {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.referenceContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.referenceContent h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a202c;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.referenceContent p {
+  color: #010821;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.referenceFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.referenceCategory {
+  background: rgba(255, 255, 255, 0.4);
+  color: #707EAE;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  border: 1px solid #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  backdrop-filter: blur(10px);
+}
+
+.referenceDate {
+  color: #707EAE;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Logo section */
+.logoSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #BCCDD6;
+}
+
+.logoContainer {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.logoImage {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.logoName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.logoDate {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .blogDetailHeader > * {
+    bottom: 32px;
+    padding: 0 1rem;
+  }
+
+  .blogDetailHeaderTitle {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .blogDetailMain {
+    padding: 1rem 0.5rem 2rem 0.5rem;
+  }
+
+  .blogDetailContent {
+    padding: 2rem 1.5rem;
+  }
+
+  .blogDetailProse {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .blogDetailProse h1,
+  .blogDetailProse h2,
+  .blogDetailProse h3,
+  .blogDetailProse h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 24px;
+  }
+
+  .blogDetailProse h2 {
+    font-size: 1.5rem;
+  }
+
+  .blogDetailProse h3 {
+    font-size: 1.25rem;
+  }
+
+  .blogDetailProse img {
+    margin: 1.5rem 0;
+  }
+
+  .authorSection {
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  .authorInfo {
+    gap: 0.75rem;
+  }
+
+  .authorAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .authorDetails h3 {
+    font-size: 1rem;
+  }
+
+  .authorTitle {
+    font-size: 0.875rem;
+  }
+
+  .logoSection {
+    padding: 1.5rem 1rem;
+  }
+
+  .logoContainer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logoImage {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logoName {
+    font-size: 1.1rem;
+  }
+
+  .logoDate {
+    font-size: 0.9rem;
+  }
+
+  .articleGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .referenceArticles {
+    padding: 3rem 1rem;
+  }
+  
+  .referenceArticles h3 {
+    font-size: 2rem;
+  }
+
+  .referenceContent {
+    padding: 1.5rem;
+  }
+
+  .referenceContent h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .referenceContent p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .referenceFooter {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .referenceCategory {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .referenceDate {
+    font-size: 0.8rem;
+  }
+} 
